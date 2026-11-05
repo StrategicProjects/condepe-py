@@ -506,11 +506,12 @@ MAPAS = [
         """
         ## Regiões
 
-        `condepe_regions()` diz a que região pertence cada município em dez
+        `condepe_regions()` diz a que região pertence cada município em onze
         regionalizações: Regiões de Desenvolvimento (RD) da Condepe/Fidem,
         meso e microrregiões e regiões imediatas e intermediárias do IBGE,
         regiões e macrorregiões de saúde, Gerências Regionais de Educação
-        (GRE), regiões fiscais da SEFAZ e regiões metropolitanas. A tabela vai
+        (GRE), regiões fiscais da SEFAZ, Diretorias Regionais de Operações (DRO) do DER e regiões
+metropolitanas. A tabela vai
         com o pacote, sem rede:
         """,
         """

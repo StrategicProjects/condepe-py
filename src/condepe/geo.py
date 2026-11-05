@@ -38,6 +38,7 @@ LEVELS: dict[str, str] = {
     "macrorregiao_saude": "Macrorregiões de saúde (SES-PE, via DATASUS)",
     "gre": "Gerências Regionais de Educação (SEE-PE; Recife Norte e Sul juntas)",
     "regiao_fiscal": "Regiões fiscais (SEFAZ-PE)",
+    "dro": "Diretorias Regionais de Operações do DER-PE (Noronha é o 1º DOD)",
     "rm": "Regiões metropolitanas: RMR e RIDE Petrolina-Juazeiro",
 }
 
@@ -55,12 +56,13 @@ def _gpd():
 def condepe_regions(level: str | None = None) -> pd.DataFrame:
     """Regionalizações dos municípios de Pernambuco.
 
-    A que região pertence cada município em dez regionalizações oficiais:
+    A que região pertence cada município em onze regionalizações oficiais:
     ``rd`` (Regiões de Desenvolvimento da Condepe/Fidem), ``mesorregiao``,
     ``microrregiao``, ``regiao_intermediaria`` e ``regiao_imediata`` (IBGE),
     ``regiao_saude`` e ``macrorregiao_saude`` (SES-PE), ``gre`` (Gerências
     Regionais de Educação da SEE-PE; Recife Norte e Recife Sul ficam juntas,
-    porque dividem o mesmo município), ``regiao_fiscal`` (SEFAZ-PE) e ``rm``
+    porque dividem o mesmo município), ``regiao_fiscal`` (SEFAZ-PE), ``dro`` (Diretorias Regionais de
+    Operações do DER-PE) e ``rm``
     (regiões metropolitanas). A tabela vai com o pacote, sem rede.
 
     Parameters

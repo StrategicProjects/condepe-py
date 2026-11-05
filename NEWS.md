@@ -2,9 +2,9 @@
 
 * Mapas: `condepe_geometry()` (Malha Municipal de Pernambuco da Condepe/Fidem,
   conferida pelo SHA-256 do manifesto, ou a malha do IBGE), dissolvida em
-  regiões com `level`; `condepe_regions()` com dez regionalizações (Regiões de
+  regiões com `level`; `condepe_regions()` com onze regionalizações (Regiões de
   Desenvolvimento, meso e microrregiões, regiões imediatas e intermediárias,
-  regiões e macrorregiões de saúde, GRE, regiões fiscais, regiões
+  regiões e macrorregiões de saúde, GRE, regiões fiscais, DRO do DER, regiões
   metropolitanas);
   `condepe_add_geometry()` junta os dados à malha. `geopandas` é opcional
   (`pip install "condepe[geo]"`).
