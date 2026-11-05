@@ -61,8 +61,8 @@ def page(path: str, parts: list[tuple[str, str | None]]) -> None:
         out = run(code, ns)
         # Figures are printed as Markdown image links: they go outside the
         # output block.
-        imagens = [l for l in out.splitlines() if l.startswith("![")]
-        texto = "\n".join(l for l in out.splitlines() if not l.startswith("![")).rstrip()
+        imagens = [ln for ln in out.splitlines() if ln.startswith("![")]
+        texto = "\n".join(ln for ln in out.splitlines() if not ln.startswith("![")).rstrip()
         if texto:
             md.append("```text\n" + texto + "\n```\n")
         md.extend(i + "\n" for i in imagens)
