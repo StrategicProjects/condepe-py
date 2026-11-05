@@ -34,7 +34,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://cf.pe.gov.br/observatorio"
+Homepage = "https://strategicprojects.github.io/condepe-py/"
+Data = "https://cf.pe.gov.br/observatorio"
 Repository = "https://github.com/StrategicProjects/condepe-py"
 Issues = "https://github.com/StrategicProjects/condepe-py/issues"
 Changelog = "https://github.com/StrategicProjects/condepe-py/blob/main/NEWS.md"
@@ -42,6 +43,7 @@ Changelog = "https://github.com/StrategicProjects/condepe-py/blob/main/NEWS.md"
 [project.optional-dependencies]
 test = ["pytest>=7", "responses>=0.23"]
 dev = ["pytest>=7", "responses>=0.23", "ruff>=0.6", "build>=1.0"]
+docs = ["mkdocs-material>=9.5", "mkdocstrings[python]>=0.26", "matplotlib>=3.5"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/condepe"]

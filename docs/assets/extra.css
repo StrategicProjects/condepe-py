@@ -1,0 +1,12 @@
+/* Institutional blue of Pernambuco (#0C2856) with the cyan accent of the
+   official palette, as in the R package site. */
+:root {
+  --md-primary-fg-color: #0c2856;
+  --md-primary-fg-color--light: #1f4f9a;
+  --md-primary-fg-color--dark: #06183a;
+  --md-accent-fg-color: #0068ff;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0c2856;
+  --md-accent-fg-color: #00b7ff;
+}

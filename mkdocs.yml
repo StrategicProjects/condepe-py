@@ -1,0 +1,61 @@
+site_name: condepe
+site_description: Open data of the Pernambuco Observatory (Condepe/Fidem) from Python
+site_url: https://strategicprojects.github.io/condepe-py/
+repo_url: https://github.com/StrategicProjects/condepe-py
+repo_name: StrategicProjects/condepe-py
+copyright: Code MIT · Data CC BY 4.0 Condepe/Fidem
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+  features:
+    - navigation.sections
+    - content.code.copy
+    - search.highlight
+
+extra_css:
+  - assets/extra.css
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Worked examples: examples.md
+  - API reference: api.md
+  - News: news.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: numpy
+            show_root_heading: true
+            show_source: false
+            members_order: source
+
+exclude_docs: |
+  precompile.py

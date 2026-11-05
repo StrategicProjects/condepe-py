@@ -106,6 +106,13 @@ def condepe_data(source: str, refresh: bool = False) -> pd.DataFrame:
 def condepe_indicators(source: str, refresh: bool = False) -> pd.DataFrame:
     """List the indicators of a source, with unit, coverage and periodicity.
 
+    Parameters
+    ----------
+    source:
+        Source id (see :func:`condepe_catalog`).
+    refresh:
+        Download the source again even if a verified copy is cached.
+
     Returns
     -------
     pandas.DataFrame
@@ -190,7 +197,18 @@ def condepe_localities(refresh: bool = False) -> pd.DataFrame:
     """The 185 municipalities of Pernambuco and the State, with IBGE codes.
 
     Taken from the population estimates source, which covers every
-    municipality (Fernando de Noronha included).
+    municipality (Fernando de Noronha included); the State (``"26"``) comes
+    first.
+
+    Parameters
+    ----------
+    refresh:
+        Download the source again even if a verified copy is cached.
+
+    Returns
+    -------
+    pandas.DataFrame
+        ``cd_municipio_ibge`` and ``nm_municipio``.
     """
     df = condepe_data("sidra_populacao_estimada", refresh=refresh)
     out = (

@@ -1,0 +1,21 @@
+# Builds the site from the precompiled pages (no network needed) and
+# publishes it to the gh-pages branch. Manual until the repository is made
+# public: GitHub Pages of a private repository would still be public.
+name: docs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -e ".[docs]"
+      - run: mkdocs gh-deploy --force --strict

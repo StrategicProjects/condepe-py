@@ -1,4 +1,4 @@
-# condepe
+# condepe <img src="docs/assets/logo.svg" align="right" height="139" alt="condepe hex logo" />
 
 Python access to the open data of the **Observatório de Pernambuco**, published by
 [Condepe/Fidem](https://cf.pe.gov.br) (the Pernambuco State Agency for Planning and
@@ -60,11 +60,15 @@ checked against the sha256 published in the catalogue. The catalogue itself is
 trusted for 6 hours. Set `CONDEPE_URL`, `CONDEPE_MIRROR_URL` or
 `CONDEPE_CACHE_DIR` to override the defaults.
 
+Documentation: <https://strategicprojects.github.io/condepe-py/>.
+
 ## Citation and license
 
 Data: Condepe/Fidem, *Observatório de Pernambuco — Base de Dados do Estado*,
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The citation with the
 version in use is in `condepe_catalog().attrs["citation"]`.
 
-Code: MIT. An R package with the same functions is
+Code: MIT. To read or write *private* buckets on `s3.pe.gov.br` with an
+access key, see [`s3pe`](https://github.com/StrategicProjects/s3pe); `condepe`
+needs no key, since the Observatory open data are public. An R package with the same functions is
 [`condepe` for R](https://github.com/StrategicProjects/condepe-r).
