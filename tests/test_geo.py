@@ -86,6 +86,8 @@ def test_regions_cover_185_municipalities():
         "regiao_imediata": 18,
         "regiao_saude": 12,
         "macrorregiao_saude": 4,
+        "gre": 15,
+        "regiao_fiscal": 3,
         "rm": 2,
     }
     for nivel, n in esperado.items():
