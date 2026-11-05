@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "condepe"
-version = "0.1.0.dev0"
+version = "0.1.0"
 description = "Access the open data of the Pernambuco Observatory (Condepe/Fidem) from Python"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -19,7 +19,7 @@ authors = [
 ]
 keywords = ["Pernambuco", "Condepe/Fidem", "open-data", "statistics", "Brazil", "municipalities", "pandas"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",

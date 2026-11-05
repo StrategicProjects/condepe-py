@@ -1,4 +1,4 @@
-# condepe (development version)
+# condepe 0.1.0
 
 * First version: `condepe_catalog()`, `condepe_indicators()`, `condepe_data()`,
   `condepe_series()` and `condepe_localities()`, reading the Observatory open data

@@ -12,7 +12,8 @@ columns), so one set of functions covers all of them.
 ## Installation
 
 ```bash
-pip install condepe   # not yet on PyPI; for now:
+pip install condepe
+# development version:
 pip install git+https://github.com/StrategicProjects/condepe-py
 ```
 
