@@ -1,6 +1,6 @@
-# API reference
+# Referência das funções
 
-## Discover
+## Descobrir
 
 ::: condepe.condepe_catalog
 
@@ -8,13 +8,13 @@
 
 ::: condepe.condepe_localities
 
-## Retrieve data
+## Obter os dados
 
 ::: condepe.condepe_series
 
 ::: condepe.condepe_data
 
-## Cache and settings
+## Cache e configuração
 
 ::: condepe.condepe_cache_dir
 
@@ -24,7 +24,7 @@
 
 ::: condepe.set_verbose
 
-## Errors
+## Erros
 
 ::: condepe.CondepeError
 

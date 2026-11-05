@@ -1,12 +1,13 @@
 site_name: condepe
-site_description: Open data of the Pernambuco Observatory (Condepe/Fidem) from Python
+site_description: Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python
 site_url: https://strategicprojects.github.io/condepe-py/
 repo_url: https://github.com/StrategicProjects/condepe-py
 repo_name: StrategicProjects/condepe-py
-copyright: Code MIT · Data CC BY 4.0 Condepe/Fidem
+copyright: Código MIT · Dados CC BY 4.0 Condepe/Fidem
 
 theme:
   name: material
+  language: pt-BR
   logo: assets/logo.svg
   favicon: assets/logo.svg
   palette:
@@ -15,13 +16,13 @@ theme:
       accent: custom
       toggle:
         icon: material/weather-night
-        name: Dark mode
+        name: Modo escuro
     - scheme: slate
       primary: custom
       accent: custom
       toggle:
         icon: material/weather-sunny
-        name: Light mode
+        name: Modo claro
   features:
     - navigation.sections
     - content.code.copy
@@ -31,11 +32,13 @@ extra_css:
   - assets/extra.css
 
 nav:
-  - Home: index.md
-  - Getting started: getting-started.md
-  - Worked examples: examples.md
-  - API reference: api.md
-  - News: news.md
+  - Início: index.md
+  - Primeiros passos: primeiros-passos.md
+  - Exemplos: exemplos.md
+  - Mapas: mapas.md
+  - Fontes do Observatório: fontes.md
+  - Referência das funções: api.md
+  - Novidades: news.md
 
 markdown_extensions:
   - admonition

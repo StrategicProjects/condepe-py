@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "condepe"
 version = "0.1.0"
-description = "Access the open data of the Pernambuco Observatory (Condepe/Fidem) from Python"
+description = "Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.10"
@@ -43,7 +43,7 @@ Changelog = "https://github.com/StrategicProjects/condepe-py/blob/main/NEWS.md"
 [project.optional-dependencies]
 test = ["pytest>=7", "responses>=0.23"]
 dev = ["pytest>=7", "responses>=0.23", "ruff>=0.6", "build>=1.0"]
-docs = ["mkdocs-material>=9.5", "mkdocstrings[python]>=0.26", "matplotlib>=3.5"]
+docs = ["mkdocs-material>=9.5", "mkdocstrings[python]>=0.26", "matplotlib>=3.5", "geopandas>=0.14"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/condepe"]

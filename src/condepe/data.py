@@ -1,8 +1,9 @@
-"""Public functions: catalogue, indicators, full sources, series, localities.
+"""Funções públicas: catálogo, indicadores, fontes inteiras, séries, localidades.
 
-Every source of the Observatory is published in the same long format (one
-observation per row, 15 columns). Column names are kept in Portuguese, as
-published, so results stay traceable to the official files.
+Toda fonte do Observatório é publicada no mesmo formato longo (uma observação
+por linha, 15 colunas). Os nomes das colunas ficam em português, como
+publicados, para que os resultados possam ser rastreados até os arquivos
+oficiais.
 """
 
 from __future__ import annotations
@@ -36,19 +37,20 @@ _CATALOG_COLUMNS = [
 
 
 def condepe_catalog(refresh: bool = False) -> pd.DataFrame:
-    """List the sources published by the Observatory.
+    """Fontes publicadas pelo Observatório.
 
     Parameters
     ----------
     refresh:
-        Ignore the cached catalogue (trusted for 6 hours) and ask the server.
+        Ignora o catálogo em cache (válido por 6 horas) e consulta o servidor.
 
     Returns
     -------
     pandas.DataFrame
-        One row per source (``id_fonte``) with axis, theme, description,
-        original publisher, number of rows, indicators and localities, and the
-        years covered. ``attrs["version"]`` holds the catalogue version.
+        Uma linha por fonte (``id_fonte``), com eixo, tema, descrição, órgão
+        de origem, número de linhas, de indicadores e de localidades, e os
+        anos cobertos. ``attrs["version"]`` traz a versão do catálogo e
+        ``attrs["citation"]``, a citação.
     """
     cat = _client.catalog_json(refresh=refresh)
     df = pd.DataFrame([{k: f.get(k) for k in _CATALOG_COLUMNS} for f in cat["fontes"]])
@@ -67,26 +69,27 @@ def _source_entry(source: str, cat: dict[str, Any]) -> dict[str, Any]:
 
 
 def condepe_data(source: str, refresh: bool = False) -> pd.DataFrame:
-    """Download a whole source (all indicators, localities and periods).
+    """Uma fonte inteira (todos os indicadores, localidades e períodos).
 
-    The Parquet file is kept in the disk cache for the current catalogue
-    version and verified against the sha256 published in the catalogue.
+    O arquivo Parquet fica no cache em disco para a versão corrente do
+    catálogo e é conferido pelo SHA-256 publicado no catálogo.
 
     Parameters
     ----------
     source:
-        Source id, e.g. ``"sidra_populacao_estimada"`` (see
-        :func:`condepe_catalog`).
+        Identificador da fonte, por exemplo ``"sidra_populacao_estimada"``
+        (veja :func:`condepe_catalog`).
     refresh:
-        Download again even if a verified copy is cached.
+        Baixa de novo mesmo que haja cópia conferida em cache.
 
     Returns
     -------
     pandas.DataFrame
-        The 15 columns of the Observatory long format: ``cd_municipio_ibge``,
+        As 15 colunas do formato longo do Observatório: ``cd_municipio_ibge``,
         ``nm_municipio``, ``ano``, ``mes``, ``indicador``, ``indicador_base``,
         ``valor``, ``unidade``, ``natureza``, ``id_fonte``, ``eixo``, ``tema``,
-        ``assunto``, ``fonte_original``, ``arquivo_origem``.
+        ``assunto``, ``fonte_original``, ``arquivo_origem``. Séries mensais
+        trazem o período em ``indicador`` (``"… [MM/AAAA]"``) e em ``mes``.
     """
     cat = _client.catalog_json(refresh=refresh)
     entry = _source_entry(source, cat)
@@ -104,21 +107,21 @@ def condepe_data(source: str, refresh: bool = False) -> pd.DataFrame:
 
 
 def condepe_indicators(source: str, refresh: bool = False) -> pd.DataFrame:
-    """List the indicators of a source, with unit, coverage and periodicity.
+    """Indicadores de uma fonte, com unidade, cobertura e periodicidade.
 
     Parameters
     ----------
     source:
-        Source id (see :func:`condepe_catalog`).
+        Identificador da fonte (veja :func:`condepe_catalog`).
     refresh:
-        Download the source again even if a verified copy is cached.
+        Baixa a fonte de novo mesmo que haja cópia conferida em cache.
 
     Returns
     -------
     pandas.DataFrame
-        One row per ``indicador_base`` with ``unidade``, ``natureza``,
-        ``mensal`` (monthly series), number of observations and localities,
-        and first/last year.
+        Uma linha por ``indicador_base``, com ``unidade``, ``natureza``,
+        ``mensal`` (série mensal), número de observações e de localidades, e
+        primeiro e último ano.
     """
     df = condepe_data(source, refresh=refresh)
     out = (
@@ -151,25 +154,28 @@ def condepe_series(
     years: int | Iterable[int] | None = None,
     refresh: bool = False,
 ) -> pd.DataFrame:
-    """Series of one or more indicators, optionally filtered by place and year.
+    """Série de um ou mais indicadores, filtrada por localidade e ano se pedido.
 
     Parameters
     ----------
     source:
-        Source id (see :func:`condepe_catalog`).
+        Identificador da fonte (veja :func:`condepe_catalog`).
     indicator:
-        One or more ``indicador_base`` values, exactly as listed by
+        Um ou mais valores de ``indicador_base``, exatamente como listados por
         :func:`condepe_indicators`.
     code:
-        IBGE codes: 7 digits for municipalities, ``"26"`` for the State.
-        ``None`` keeps every locality.
+        Códigos IBGE: 7 dígitos para municípios, ``"26"`` para o Estado.
+        ``None`` mantém todas as localidades.
     years:
-        A year or a collection of years; ``None`` keeps all.
+        Um ano ou uma coleção de anos; ``None`` mantém todos.
+    refresh:
+        Baixa a fonte de novo mesmo que haja cópia conferida em cache.
 
     Returns
     -------
     pandas.DataFrame
-        The matching observations, sorted by locality, year and month.
+        As observações que atendem aos filtros, ordenadas por localidade, ano
+        e mês.
     """
     df = condepe_data(source, refresh=refresh)
     wanted = _as_list(indicator) or []
@@ -194,21 +200,21 @@ def condepe_series(
 
 
 def condepe_localities(refresh: bool = False) -> pd.DataFrame:
-    """The 185 municipalities of Pernambuco and the State, with IBGE codes.
+    """Os 185 municípios de Pernambuco e o Estado, com código IBGE.
 
-    Taken from the population estimates source, which covers every
-    municipality (Fernando de Noronha included); the State (``"26"``) comes
-    first.
+    Tirados da fonte de estimativas de população, que cobre todos os
+    municípios (Fernando de Noronha incluído); o Estado (``"26"``) vem
+    primeiro.
 
     Parameters
     ----------
     refresh:
-        Download the source again even if a verified copy is cached.
+        Baixa a fonte de novo mesmo que haja cópia conferida em cache.
 
     Returns
     -------
     pandas.DataFrame
-        ``cd_municipio_ibge`` and ``nm_municipio``.
+        ``cd_municipio_ibge`` e ``nm_municipio``.
     """
     df = condepe_data("sidra_populacao_estimada", refresh=refresh)
     out = (

@@ -1,3 +1,8 @@
+# condepe 0.1.1 (em desenvolvimento)
+
+* Documentação e site em português; páginas novas de mapas e da relação das
+  fontes do Observatório.
+
 # condepe 0.1.0
 
 * First version: `condepe_catalog()`, `condepe_indicators()`, `condepe_data()`,

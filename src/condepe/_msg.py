@@ -11,7 +11,7 @@ _VERBOSE = True
 
 
 def set_verbose(verbose: bool) -> None:
-    """Enable or disable informational messages."""
+    """Liga ou desliga as mensagens informativas."""
     global _VERBOSE
     _VERBOSE = bool(verbose)
 

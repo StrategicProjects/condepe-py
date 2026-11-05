@@ -34,19 +34,19 @@ _TRANSIENT = {429, 500, 502, 503, 504}
 
 
 class CondepeError(RuntimeError):
-    """Base class for errors raised by condepe."""
+    """Classe base dos erros do condepe."""
 
 
 class HttpError(CondepeError):
-    """Neither the canonical endpoint nor the mirror answered."""
+    """Nem o endereço canônico nem o espelho responderam."""
 
 
 class IntegrityError(CondepeError):
-    """A downloaded file does not match the sha256 in the catalogue."""
+    """Um arquivo baixado não confere com o SHA-256 do catálogo."""
 
 
 def set_timeout(seconds: float = 60.0) -> None:
-    """Set the timeout, in seconds, of each HTTP request."""
+    """Define o tempo limite, em segundos, de cada requisição HTTP."""
     global _TIMEOUT
     if not isinstance(seconds, (int, float)) or isinstance(seconds, bool) or seconds <= 0:
         raise ValueError("`seconds` must be a positive number.")
@@ -65,12 +65,12 @@ def base_urls() -> list[str]:
 
 
 def cache_dir() -> Path:
-    """Directory of the disk cache (``CONDEPE_CACHE_DIR`` overrides it)."""
+    """Pasta do cache em disco (``CONDEPE_CACHE_DIR`` a substitui)."""
     return Path(os.environ.get("CONDEPE_CACHE_DIR") or user_cache_dir("condepe"))
 
 
 def clear_cache() -> Path:
-    """Delete every cached file and return the cache directory."""
+    """Apaga todo o cache e devolve a pasta."""
     d = cache_dir()
     if d.exists():
         shutil.rmtree(d)
