@@ -156,10 +156,13 @@ def cached_file(path: str, sha256: str, version: str, refresh: bool = False) -> 
 
 
 def _prune_old_versions(keep: str) -> None:
-    """Drop cached files of other catalogue versions (they are superseded)."""
+    """Drop cached files of other catalogue versions (they are superseded).
+
+    ``malha/`` holds the municipal meshes, versioned on their own.
+    """
     root = cache_dir()
     for child in root.iterdir():
-        if child.is_dir() and child.name != keep:
+        if child.is_dir() and child.name not in (keep, "malha"):
             shutil.rmtree(child, ignore_errors=True)
 
 

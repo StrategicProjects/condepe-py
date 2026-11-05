@@ -403,42 +403,30 @@ MAPAS = [
 
         Toda observação do Observatório traz o código IBGE do município
         (`cd_municipio_ibge`), e isso basta para juntar os dados a uma malha
-        municipal e fazer mapas. Esta página usa `geopandas` e `matplotlib`,
-        que não são dependências do pacote:
+        municipal e fazer mapas. O pacote traz a malha (`condepe_geometry()`),
+        a junção (`condepe_add_geometry()`) e as regionalizações do estado
+        (`condepe_regions()`). As funções de malha usam `geopandas`, que é
+        opcional; os gráficos usam `matplotlib`:
 
         ```bash
-        pip install geopandas matplotlib
+        pip install "condepe[geo]" matplotlib
         ```
 
         ## A malha municipal
 
-        A malha vem da API de malhas do IBGE, em GeoJSON, com o código do
-        município na propriedade `codarea` — o mesmo de `cd_municipio_ibge`. A
-        qualidade intermediária é leve (cerca de 200 KB para Pernambuco):
+        `condepe_geometry()` baixa a Malha Municipal de Pernambuco publicada
+        pela Condepe/Fidem (a edição corrente, conferida pelo SHA-256 e
+        guardada em cache). Com `source="ibge"`, a malha vem da API de malhas
+        do IBGE. Fernando de Noronha (2605459) fica a 545 km da costa e, num
+        mapa do estado inteiro, espreme o continente para a esquerda; os mapas
+        abaixo o deixam de fora com `noronha=False`:
         """,
         """
-        url = ("https://servicodados.ibge.gov.br/api/v3/malhas/estados/26"
-               "?formato=application/vnd.geo%2Bjson&intrarregiao=municipio&qualidade=intermediaria")
+        malha = condepe.condepe_geometry(noronha=False)
 
-        import io, requests
-
-        malha = gpd.read_file(io.BytesIO(requests.get(url, timeout=60).content))
-
-        print(len(malha), "municípios;", malha.crs)
+        print(len(malha), "municípios; edição", malha.attrs["version"], ";", malha.crs)
 
         malha.head(3)
-        """,
-    ),
-    (
-        """
-        Fernando de Noronha (2605459) fica a 545 km da costa; num mapa do
-        estado inteiro ele espreme o continente para a esquerda. Os mapas
-        abaixo o deixam de fora:
-        """,
-        """
-        malha = malha[malha["codarea"] != "2605459"]
-
-        len(malha)
         """,
     ),
     (
@@ -457,7 +445,7 @@ MAPAS = [
 
         media = tmi.groupby("cd_municipio_ibge", as_index=False)["valor"].mean()
 
-        mapa = malha.merge(media, left_on="codarea", right_on="cd_municipio_ibge", how="left")
+        mapa = condepe.condepe_add_geometry(media, geometry=malha)
 
         ax = mapa.plot(column="valor", cmap="Blues", edgecolor="white", linewidth=0.15,
                        legend=True, figsize=(9, 3.6),
@@ -492,7 +480,7 @@ MAPAS = [
 
         w["classe"] = pd.cut(w["var"], [-1e9, -5, 0, 5, 15, 1e9], labels=rotulos)
 
-        mapa = malha.merge(w.reset_index(), left_on="codarea", right_on="cd_municipio_ibge")
+        mapa = condepe.condepe_add_geometry(w.reset_index(), geometry=malha)
 
         cores = dict(zip(rotulos, ["#ff6700", "#ffc49a", "#bcd6f5", "#3d84df", "#0c2856"]))
 
@@ -516,6 +504,75 @@ MAPAS = [
     ),
     (
         """
+        ## Regiões
+
+        `condepe_regions()` diz a que região pertence cada município em oito
+        regionalizações: Regiões de Desenvolvimento (RD) da Condepe/Fidem,
+        meso e microrregiões e regiões imediatas e intermediárias do IBGE,
+        regiões e macrorregiões de saúde e regiões metropolitanas. A tabela vai
+        com o pacote, sem rede:
+        """,
+        """
+        reg = condepe.condepe_regions()
+
+        reg["rd"].value_counts()
+        """,
+    ),
+    (
+        """
+        Para mapear uma região, agregue os dados numa coluna `regiao` e passe
+        `level` a `condepe_add_geometry()`: a malha municipal é dissolvida na
+        regionalização pedida, com as mesmas divisas. População estimada de
+        2025 por Região de Desenvolvimento:
+        """,
+        """
+        pop = condepe.condepe_series("sidra_populacao_estimada",
+                                     "Populacao residente estimada", years=2025)
+
+        pop = pop.merge(condepe.condepe_regions("rd")[["cd_municipio_ibge", "regiao"]])
+
+        por_rd = pop.groupby("regiao", as_index=False)["valor"].sum()
+
+        mapa = condepe.condepe_add_geometry(por_rd, level="rd", noronha=False)
+
+        ax = mapa.plot(column=mapa["valor"] / 1e6, cmap="Blues", edgecolor="white",
+                       linewidth=0.6, legend=True, figsize=(9, 3.6),
+                       legend_kwds={"label": "milhões de habitantes", "shrink": 0.6})
+
+        ax.set_axis_off()
+
+        ax.set_title("População estimada por Região de Desenvolvimento, 2025", loc="left")
+
+        print(fig("mapa_rd"))
+
+        por_rd.sort_values("valor", ascending=False)
+        """,
+    ),
+    (
+        """
+        Os contornos das regiões também servem de camada sobre um mapa
+        municipal: a mortalidade infantil por município e, por cima, as doze
+        regiões de saúde (as Geres):
+        """,
+        """
+        geres = condepe.condepe_geometry("regiao_saude", noronha=False)
+
+        ax = condepe.condepe_add_geometry(media, geometry=malha).plot(
+            column="valor", cmap="Blues", legend=True, figsize=(9, 3.6),
+            legend_kwds={"label": "por mil nascidos vivos", "shrink": 0.6},
+            missing_kwds={"color": "lightgrey"})
+
+        geres.boundary.plot(ax=ax, color="white", linewidth=1.1)
+
+        ax.set_axis_off()
+
+        ax.set_title("Mortalidade infantil (2022 a 2024) e regiões de saúde", loc="left")
+
+        print(fig("mapa_saude"))
+        """,
+    ),
+    (
+        """
         ## Região Metropolitana do Recife
 
         Para ver um recorte, filtre a malha antes de desenhar. Os 15
@@ -524,9 +581,10 @@ MAPAS = [
         como zero leitos de UTI:
         """,
         """
-        rmr = ["2600054", "2601052", "2602902", "2603454", "2606200", "2606804",
-               "2607208", "2607604", "2607752", "2607901", "2609402", "2609600",
-               "2610707", "2611606", "2613701"]
+        reg_rm = condepe.condepe_regions("rm")
+
+        rmr = reg_rm.loc[reg_rm["regiao"] == "Região Metropolitana do Recife",
+                         "cd_municipio_ibge"].tolist()
 
         uti = condepe.condepe_series("datasus_leitos", "Leitos de UTI - Total",
                                      code=rmr, years=2024)
@@ -540,14 +598,13 @@ MAPAS = [
 
         d["por_100mil"] = 1e5 * d["valor_uti"] / d["valor_pop"]
 
-        mapa = malha[malha["codarea"].isin(rmr)].merge(
-            d, left_on="codarea", right_on="cd_municipio_ibge")
+        mapa = condepe.condepe_add_geometry(d, geometry=malha, how="inner")
 
         ax = mapa.plot(column="por_100mil", cmap="Blues", edgecolor="white", linewidth=0.4,
                        legend=True, figsize=(5.5, 6.5),
                        legend_kwds={"label": "por 100 mil hab.", "shrink": 0.5})
 
-        for _, r in mapa[mapa["por_100mil"] >= 40].iterrows():
+        for _, r in mapa[mapa["por_100mil"] >= 40].iterrows():  # nm_municipio vem da malha
             p = r.geometry.representative_point()
             ax.annotate(r["nm_municipio"], (p.x, p.y), ha="center", fontsize=8,
                         color="white", weight="bold")
@@ -577,43 +634,80 @@ def br(n: int) -> str:
     return f"{n:,}".replace(",", ".")
 
 
+def _esc(x: str) -> str:
+    return str(x).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def tabela_fontes_html(cat: pd.DataFrame, recolher: bool = False, nivel: int = 2) -> str:
+    """Tabela das fontes no estilo das tabelas do Notion (classe fontes-notion,
+    em assets/extra.css): uma por eixo, tema como etiqueta, linhas zebradas.
+    Mesma marcação do site do pacote R."""
+    temas = sorted(cat["tema"].unique())
+    cor = {t: i % 9 for i, t in enumerate(temas)}
+    out = []
+    for eixo in sorted(cat["eixo"].unique()):
+        d = cat[cat["eixo"] == eixo].sort_values(["tema", "id_fonte"])
+        linhas = []
+        for _, f in d.iterrows():
+            periodo = (
+                str(f["ano_inicio"])
+                if f["ano_inicio"] == f["ano_fim"]
+                else f"{f['ano_inicio']}–{f['ano_fim']}"
+            )
+            if f["localidades"] == 1:
+                abr = " · só Pernambuco"
+            elif f["localidades"] >= 184:
+                abr = ""
+            else:
+                abr = f" · {f['localidades']} municípios"
+            linhas.append(
+                f'<tr><td><span class="pill pill-{cor[f["tema"]]}">{_esc(f["tema"])}</span>'
+                f"<br><code>{f['id_fonte'].replace('_', '_<wbr>')}</code></td>"
+                f'<td>{_esc(f["descricao"])}<div class="origem">{_esc(f["fonte_original"])}'
+                f"{abr}</div></td>"
+                f'<td class="num">{periodo}</td>'
+                f'<td class="num">{br(int(f["indicadores"]))}</td></tr>'
+            )
+        tabela = (
+            '<div class="fontes-notion-wrap"><table class="fontes-notion">'
+            "<thead><tr><th>Tema e fonte</th><th>Descrição e origem</th>"
+            '<th class="num">Período</th><th class="num">Indicadores</th></tr></thead>'
+            "<tbody>" + "".join(linhas) + "</tbody></table></div>"
+        )
+        n = len(d)
+        resumo = (
+            f"{n} {'fonte' if n == 1 else 'fontes'} · "
+            f"{br(int(d['indicadores'].sum()))} indicadores"
+        )
+        if recolher:
+            out.append(
+                f'<details class="fontes-eixo"><summary><span class="eixo">{_esc(eixo)}</span> '
+                f'<span class="resumo">{resumo}</span></summary>\n{tabela}\n</details>\n'
+            )
+        else:
+            out.append(
+                f"{'#' * nivel} {eixo}\n\n<p class=\"resumo-eixo\">{resumo}</p>\n\n{tabela}\n"
+            )
+    return "\n".join(out)
+
+
+def resumo_catalogo(cat: pd.DataFrame) -> str:
+    return (
+        f"Versão **`{cat.attrs['version']}`** do catálogo: **{len(cat)} fontes**, "
+        f"**{br(int(cat['indicadores'].sum()))} indicadores** e "
+        f"**{br(int(cat['linhas'].sum()))} observações**."
+    )
+
+
 def pagina_fontes() -> None:
-    """Relação das fontes, por eixo e tema, gerada do catálogo."""
+    """Relação das fontes, por eixo, gerada do catálogo."""
     cat = condepe.condepe_catalog()
     md = [
         "# Fontes do Observatório\n",
-        f"Relação das fontes publicadas pelo Observatório de Pernambuco na versão "
-        f"**{cat.attrs['version']}** do catálogo: **{len(cat)} fontes** e "
-        f"**{br(int(cat['indicadores'].sum()))} indicadores**, num total de "
-        f"**{br(int(cat['linhas'].sum()))} observações**. A lista foi gerada com "
-        "`condepe_catalog()`; o identificador (`id_fonte`) é o que se passa às demais "
-        "funções. Cada fonte também tem uma ficha em <https://cf.pe.gov.br/observatorio>.\n",
-    ]
-    for eixo in sorted(cat["eixo"].unique()):
-        md.append(f"## {eixo}\n")
-        sub = cat[cat["eixo"] == eixo]
-        for tema in sorted(sub["tema"].unique()):
-            md.append(f"### {tema}\n")
-            md.append("| Fonte | Descrição e origem | Período | Indicadores |")
-            md.append("|---|---|:-:|--:|")
-            for _, f in sub[sub["tema"] == tema].sort_values("id_fonte").iterrows():
-                periodo = (
-                    str(f["ano_inicio"])
-                    if f["ano_inicio"] == f["ano_fim"]
-                    else f"{f['ano_inicio']}–{f['ano_fim']}"
-                )
-                if f["localidades"] == 1:
-                    abr = " · só Pernambuco"
-                elif f["localidades"] >= 184:
-                    abr = ""
-                else:
-                    abr = f" · {f['localidades']} municípios"
-                md.append(
-                    f"| `{f['id_fonte']}` | {f['descricao']}.<br><small>{f['fonte_original']}"
-                    f"{abr}</small> | {periodo} | {br(int(f['indicadores']))} |"
-                )
-            md.append("")
-    md += [
+        resumo_catalogo(cat) + " A lista foi gerada com `condepe_catalog()`; o "
+        "identificador (`id_fonte`) é o que se passa às demais funções. Cada fonte "
+        "também tem uma ficha em <https://cf.pe.gov.br/observatorio>.\n",
+        tabela_fontes_html(cat),
         "## Como usar\n",
         "```python",
         "import condepe",
@@ -624,6 +718,29 @@ def pagina_fontes() -> None:
     ]
     (DOCS / "fontes.md").write_text("\n".join(md), encoding="utf-8")
     print("gravado fontes.md")
+
+    # Página inicial: a mesma tabela, com os eixos recolhíveis, entre marcadores.
+    ini, fim = "<!-- fontes:inicio -->", "<!-- fontes:fim -->"
+    index = (DOCS / "index.md").read_text(encoding="utf-8")
+    bloco = (
+        f"{ini}\n## Fontes do Observatório\n\n"
+        + resumo_catalogo(cat)
+        + " O identificador da fonte é o que se passa às funções do pacote; clique num "
+        "eixo para abrir a lista. A relação também está em "
+        "[Fontes do Observatório](fontes.md).\n\n"
+        + tabela_fontes_html(cat, recolher=True)
+        + f"\n{fim}"
+    )
+    if ini in index:
+        a, b = index.index(ini), index.index(fim) + len(fim)
+        index = index[:a] + bloco + index[b:]
+    else:
+        marca = "## De onde vêm os dados"
+        if marca not in index:
+            raise SystemExit("index.md sem a seção '## De onde vêm os dados'")
+        index = index.replace(marca, bloco + "\n\n" + marca, 1)
+    (DOCS / "index.md").write_text(index, encoding="utf-8")
+    print("gravado index.md (tabela das fontes)")
 
 
 if __name__ == "__main__":

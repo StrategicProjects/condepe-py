@@ -37,12 +37,8 @@ ano
 ```
 
 ```python
-ax = largo.plot(
-    marker="o",
-    color=["#0c2856", "#0068ff", "#00b7ff", "#ff6700"],
-    figsize=(7, 4),
-    title="Mortalidade infantil",
-)
+ax = largo.plot(marker="o", color=['#0c2856', '#0068ff', '#00b7ff', '#ff6700'], figsize=(7, 4),
+                title="Mortalidade infantil")
 
 ax.set_xlabel("")
 
@@ -82,30 +78,23 @@ Carga por espécie em cada ano com os 12 meses publicados (2022, sem
 janeiro, e o ano corrente ficam de fora):
 
 ```python
-especies = [
-    "Granel líquido",
-    "Granel sólido",
-    "Carga conteinerizada (peso bruto)",
-    "Carga geral solta",
-]
+especies = ["Granel líquido", "Granel sólido",
+            "Carga conteinerizada (peso bruto)", "Carga geral solta"]
 
-d = condepe.condepe_series("porto_suape_carga", ["Porto de Suape - " + e for e in especies])
+d = condepe.condepe_series("porto_suape_carga",
+                           ["Porto de Suape - " + e for e in especies])
 
 meses = d.groupby("ano")["mes"].nunique()
 
 d = d[d["ano"].isin(meses[meses == 12].index)]
 
-anual = d.pivot_table(index="ano", columns="indicador_base", values="valor", aggfunc="sum") / 1e6
+anual = d.pivot_table(index="ano", columns="indicador_base", values="valor",
+                      aggfunc="sum") / 1e6
 
 anual.columns = [c.replace("Porto de Suape - ", "") for c in anual.columns]
 
-ax = anual.plot.bar(
-    stacked=True,
-    color=["#0c2856", "#0068ff", "#00b7ff", "#ff6700"],
-    figsize=(7, 4),
-    title="Suape, carga por espécie",
-    rot=0,
-)
+ax = anual.plot.bar(stacked=True, color=['#0c2856', '#0068ff', '#00b7ff', '#ff6700'], figsize=(7, 4),
+                    title="Suape, carga por espécie", rot=0)
 
 ax.set_xlabel("")
 

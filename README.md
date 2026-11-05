@@ -41,6 +41,14 @@ condepe.condepe_series(
 # Uma fonte inteira e a lista de municípios
 condepe.condepe_data("datasus_sinasc")
 condepe.condepe_localities()
+
+# Mapas (pip install "condepe[geo]"): malha da Condepe/Fidem ou do IBGE,
+# regionalizações do estado e junção dos dados pelo código IBGE
+malha = condepe.condepe_geometry(noronha=False)
+rd = condepe.condepe_geometry("rd")        # Regiões de Desenvolvimento
+condepe.condepe_regions("regiao_saude")    # a que região pertence cada município
+mapa = condepe.condepe_add_geometry(condepe.condepe_series(
+    "sidra_populacao_estimada", "Populacao residente estimada", years=2025))
 ```
 
 Os nomes das colunas ficam em português, como publicados, para que todo

@@ -34,6 +34,7 @@ from .data import (
     condepe_localities,
     condepe_series,
 )
+from .geo import condepe_add_geometry, condepe_geometry, condepe_regions
 
 __version__ = "0.1.0"
 
@@ -41,12 +42,15 @@ __all__ = [
     "CondepeError",
     "HttpError",
     "IntegrityError",
+    "condepe_add_geometry",
     "condepe_cache_clear",
     "condepe_cache_dir",
     "condepe_catalog",
     "condepe_data",
+    "condepe_geometry",
     "condepe_indicators",
     "condepe_localities",
+    "condepe_regions",
     "condepe_series",
     "set_timeout",
     "set_verbose",
