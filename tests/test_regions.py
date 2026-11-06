@@ -71,6 +71,7 @@ def test_bundled_covers_185_municipalities():
         "regiao_fiscal": 3,
         "dro": 9,
         "rm": 2,
+        "up_perh": 16,
     }
     for nivel, n in esperado.items():
         assert r[nivel].dropna().nunique() == n, nivel

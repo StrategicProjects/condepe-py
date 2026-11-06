@@ -40,6 +40,7 @@ LEVELS: dict[str, str] = {
     "regiao_fiscal": "Regiões fiscais (SEFAZ-PE)",
     "dro": "Diretorias Regionais de Operações do DER-PE (Noronha é o 1º DOD)",
     "rm": "Regiões metropolitanas: RMR e RIDE Petrolina-Juazeiro",
+    "up_perh": "Unidades de Planejamento do PERH (APAC; a UP de maior área no município)",
 }
 
 
@@ -91,7 +92,7 @@ def condepe_regions(
 ) -> pd.DataFrame:
     """Regionalizações dos municípios de Pernambuco.
 
-    A que região pertence cada município em onze regionalizações oficiais:
+    A que região pertence cada município em doze regionalizações oficiais:
     ``rd`` (Regiões de Desenvolvimento da Condepe/Fidem), ``mesorregiao``,
     ``microrregiao``, ``regiao_intermediaria`` e ``regiao_imediata`` (IBGE),
     ``regiao_saude`` e ``macrorregiao_saude`` (SES-PE), ``gre`` (Gerências

@@ -121,7 +121,7 @@ Name: count, dtype: int64
 
 ## Regiões
 
-        `condepe_regions()` diz a que região pertence cada município em onze
+        `condepe_regions()` diz a que região pertence cada município em doze
         regionalizações: Regiões de Desenvolvimento (RD) da Condepe/Fidem,
         meso e microrregiões e regiões imediatas e intermediárias do IBGE,
         regiões e macrorregiões de saúde, Gerências Regionais de Educação
