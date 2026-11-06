@@ -335,25 +335,86 @@ def condepe_roads(type: str | list[str] | None = None, refresh: bool = False) ->
     >>> pav = rodovias[rodovias["classificacao"] == "PAVIMENTADA"]   # doctest: +SKIP
     >>> pav.groupby("dro")["extensao_km"].sum()          # doctest: +SKIP
     """
-    gpd = _gpd()
     tipos = [type] if isinstance(type, str) else list(type or [])
     for t in tipos:
         if t not in ROAD_TYPES:
             raise ValueError(f"`type` must be one of {', '.join(ROAD_TYPES)}.")
+    r = _geo_reference("rodovias", refresh, "a malha rodoviária")
+    if tipos:
+        versao = r.attrs["version"]
+        r = r[r["tipo"].isin(tipos)].reset_index(drop=True)
+        r.attrs["version"] = versao
+    r.attrs["source"] = "DER-PE (SRE); DNIT (SNV)"
+    return r
+
+
+HYDRO_LAYERS = {
+    "rios": "Rios e riachos (BHO da ANA, nível Otto 5)",
+    "rios_principais": "Rios principais (BHO, nível Otto 3)",
+    "massas_dagua": "Massas d'água: açudes, lagoas e reservatórios",
+    "reservatorios": "Reservatórios do semiárido acompanhados pela ANA (pontos, com capacidade e demandas)",
+    "uph": "Unidades de Planejamento Hídrico da ANA que alcançam Pernambuco",
+}
+
+
+def _geo_reference(id: str, refresh: bool, rotulo: str) -> gpd.GeoDataFrame:
+    """Uma referência com geometria (GeoParquet) do catálogo, como GeoDataFrame."""
+    gpd = _gpd()
     cat = _client.catalog_json(refresh=refresh)
-    ref = next((x for x in cat.get("referencias") or [] if x.get("id") == "rodovias"), None)
+    ref = next((x for x in cat.get("referencias") or [] if x.get("id") == id), None)
     arq = next((a for a in (ref or {}).get("arquivos", []) if a.get("formato") == "parquet"), None)
     if arq is None:
         raise _client.CondepeError(
-            f"O catálogo do Observatório (versão {cat.get('versao')}) ainda não traz a malha "
-            "rodoviária; ela entrou nos dados abertos em novembro de 2026 (tente refresh=True)."
+            f"O catálogo do Observatório (versão {cat.get('versao')}) ainda não traz {rotulo}; "
+            "as camadas com geometria entraram nos dados abertos em novembro de 2026 "
+            "(tente refresh=True)."
         )
     local = _client.cached_file(arq["caminho"], arq["sha256"], cat["versao"], refresh=refresh)
     r = gpd.read_parquet(local)
-    if tipos:
-        r = r[r["tipo"].isin(tipos)].reset_index(drop=True)
     r.attrs["version"] = cat["versao"]
-    r.attrs["source"] = "DER-PE (SRE); DNIT (SNV)"
+    return r
+
+
+def condepe_hydrography(layer: str, refresh: bool = False) -> gpd.GeoDataFrame:
+    """Hidrografia de Pernambuco.
+
+    Camadas da Agência Nacional de Águas recortadas para Pernambuco, como
+    ``GeoDataFrame`` (WGS 84): ``rios`` (rios e riachos, BHO nível Otto 5),
+    ``rios_principais`` (nível 3), ``massas_dagua`` (açudes, lagoas e
+    reservatórios), ``reservatorios`` (os acompanhados pela ANA no semiárido,
+    pontos com capacidade e demandas) e ``uph`` (Unidades de Planejamento
+    Hídrico que alcançam o Estado).
+
+    As camadas são publicadas pelo Observatório junto com os dados abertos
+    (``referencia/<camada>.parquet``, GeoParquet listado no catálogo) e lidas
+    de lá como as fontes: endereço canônico, espelho como reserva, SHA-256
+    conferido e cache em disco por versão do catálogo. Precisa do geopandas
+    (``pip install "condepe[geo]"``).
+
+    Parameters
+    ----------
+    layer:
+        Uma das camadas acima.
+    refresh:
+        Baixa a camada de novo mesmo que haja cópia conferida em cache.
+
+    Returns
+    -------
+    geopandas.GeoDataFrame
+        As colunas publicadas e a geometria (linhas, polígonos ou pontos
+        conforme a camada), com ``.attrs["version"]`` igual à versão do
+        catálogo.
+
+    Examples
+    --------
+    >>> rios = condepe_hydrography("rios_principais")            # doctest: +SKIP
+    >>> acudes = condepe_hydrography("reservatorios")             # doctest: +SKIP
+    >>> acudes.nlargest(5, "volume_maximo_m3")[["nome", "municipio"]]   # doctest: +SKIP
+    """
+    if layer not in HYDRO_LAYERS:
+        raise ValueError(f"`layer` must be one of {', '.join(HYDRO_LAYERS)}.")
+    r = _geo_reference(layer, refresh, f"a camada {layer!r} da hidrografia")
+    r.attrs["source"] = "ANA — BHO e dados abertos do SNIRH"
     return r
 
 

@@ -56,18 +56,20 @@ def _servir(com_rodovias: bool = True) -> None:
     if com_rodovias:
         cat["referencias"] = [
             {
-                "id": "rodovias",
+                "id": id_,
                 "arquivos": [
                     {
-                        "caminho": "referencia/rodovias.parquet",
+                        "caminho": f"referencia/{id_}.parquet",
                         "formato": "parquet",
                         "sha256": hashlib.sha256(raw).hexdigest(),
                     }
                 ],
             }
+            for id_ in ("rodovias", "reservatorios")
         ]
     responses.add(responses.GET, f"{CANON}/catalogo.json", body=json.dumps(cat))
     responses.add(responses.GET, f"{CANON}/referencia/rodovias.parquet", body=raw)
+    responses.add(responses.GET, f"{CANON}/referencia/reservatorios.parquet", body=raw)
 
 
 @responses.activate
@@ -89,3 +91,15 @@ def test_roads_without_reference_in_catalogue_raises():
     _servir(com_rodovias=False)
     with pytest.raises(_client.CondepeError, match="malha"):
         condepe.condepe_roads()
+
+
+@responses.activate
+def test_hydrography_reads_a_layer_and_rejects_unknown_ones():
+    _servir()
+    r = condepe.condepe_hydrography("reservatorios")
+    assert isinstance(r, gpd.GeoDataFrame) and len(r) == 3
+    assert r.attrs["version"] == VERSION
+    with pytest.raises(_client.CondepeError, match="hidrografia"):
+        condepe.condepe_hydrography("uph")
+    with pytest.raises(ValueError):
+        condepe.condepe_hydrography("lagos")

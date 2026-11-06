@@ -35,7 +35,13 @@ from .data import (
     condepe_series,
 )
 from .cite import condepe_cite
-from .geo import condepe_add_geometry, condepe_geometry, condepe_regions, condepe_roads
+from .geo import (
+    condepe_add_geometry,
+    condepe_geometry,
+    condepe_hydrography,
+    condepe_regions,
+    condepe_roads,
+)
 
 __version__ = "0.1.1"
 
@@ -50,6 +56,7 @@ __all__ = [
     "condepe_cite",
     "condepe_data",
     "condepe_geometry",
+    "condepe_hydrography",
     "condepe_indicators",
     "condepe_localities",
     "condepe_regions",

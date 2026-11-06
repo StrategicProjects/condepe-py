@@ -4,6 +4,9 @@
   com os trechos federais do SNV/DNIT) como `GeoDataFrame` de linhas, lida do
   GeoParquet `referencia/rodovias.parquet` publicado pelo Observatório, com
   filtro por tipo (estaduais, federais, vicinais, acessos).
+* `condepe_hydrography()`: hidrografia de Pernambuco recortada da ANA — rios
+  (BHO nível 5), rios principais, massas d'água, reservatórios acompanhados
+  (com capacidade e demandas) e Unidades de Planejamento Hídrico.
 
 # condepe 0.1.1
 
