@@ -18,4 +18,6 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install -e ".[docs]"
+      # docs/news.md is a copy of NEWS.md; refresh it so the page never drifts.
+      - run: cp NEWS.md docs/news.md
       - run: mkdocs gh-deploy --force --strict
