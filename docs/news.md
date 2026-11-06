@@ -1,4 +1,4 @@
-# condepe 0.1.3 (em desenvolvimento)
+# condepe 0.1.3
 
 * `condepe_layer(id)`: qualquer camada geográfica publicada no catálogo
   (`terras_indigenas`, `up_perh`…) como `GeoDataFrame`.

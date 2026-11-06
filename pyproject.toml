@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "condepe"
-version = "0.1.2"
+version = "0.1.3"
 description = "Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python"
 readme = "README.md"
 license = { file = "LICENSE" }
