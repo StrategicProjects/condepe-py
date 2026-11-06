@@ -37,7 +37,7 @@ from .data import (
 from .cite import condepe_cite
 from .geo import condepe_add_geometry, condepe_geometry, condepe_regions
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "CondepeError",

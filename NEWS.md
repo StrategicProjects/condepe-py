@@ -1,4 +1,4 @@
-# condepe 0.1.1 (em desenvolvimento)
+# condepe 0.1.1
 
 * Mapas: `condepe_geometry()` (Malha Municipal de Pernambuco da Condepe/Fidem,
   conferida pelo SHA-256 do manifesto, ou a malha do IBGE), dissolvida em
