@@ -14,6 +14,14 @@
 
 ::: condepe.condepe_data
 
+## Mapas e regiões
+
+::: condepe.condepe_geometry
+
+::: condepe.condepe_add_geometry
+
+::: condepe.condepe_regions
+
 ## Cache e configuração
 
 ::: condepe.condepe_cache_dir
