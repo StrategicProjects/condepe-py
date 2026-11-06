@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import io
 
+import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
@@ -174,3 +175,23 @@ def test_live_recife_population(tmp_path, monkeypatch):
         "sidra_populacao_estimada", "Populacao residente estimada", code="2611606", years=2025
     )
     assert len(s) == 1 and s.loc[0, "valor"] > 1_000_000
+
+
+@responses.activate
+def test_condepe_cite_pipe_ids_and_collection():
+    _servir(CANON)
+    df = condepe.condepe_data("sidra_populacao_estimada")
+    cit = df.pipe(condepe.condepe_cite)
+    assert list(cit.index) == ["sidra_populacao_estimada"]
+    assert cit.iloc[0] == df.attrs["citation"]
+    filtrado = df[df["ano"] == 2025].copy()
+    filtrado.attrs = {}  # como depois de operações que perdem os attrs
+    assert VERSION in condepe.condepe_cite(filtrado).iloc[0]
+    outro = df.assign(id_fonte="outra_fonte", fonte_original="INEP")
+    assert len(condepe.condepe_cite(pd.concat([df, outro]))) == 2
+    assert condepe.condepe_cite("sidra_populacao_estimada").equals(cit)
+    assert "fonte_original" in condepe.condepe_cite()
+    with pytest.raises(ValueError):
+        condepe.condepe_cite("nao_existe")
+    with pytest.raises(ValueError):
+        condepe.condepe_cite(pd.DataFrame({"a": [1]}))

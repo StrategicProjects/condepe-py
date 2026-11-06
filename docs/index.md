@@ -106,9 +106,16 @@ Condepe/Fidem coleta, confere, padroniza e organiza essas séries no
 Observatório de Pernambuco.
 
 Ao usar os dados, cite **a fonte original** e o Observatório como
-organizador, com a versão do catálogo. `condepe_data(fonte).attrs["citation"]`
-traz a citação pronta de uma fonte; `condepe_catalog().attrs["citation"]`, a
-do acervo. Por exemplo:
+organizador, com a versão do catálogo. `condepe_cite()` monta a citação:
+
+```python
+condepe.condepe_data("sidra_populacao_estimada").pipe(condepe.condepe_cite)  # uma por fonte
+condepe.condepe_cite("datasus_sinasc")                                      # pelo identificador
+condepe.condepe_cite()                                                      # o acervo inteiro
+```
+
+Funciona também depois de filtrar ou concatenar, porque usa as colunas
+`id_fonte` e `fonte_original`. Por exemplo:
 
 > IBGE - Estimativas da Populacao. Dados organizados pela Condepe/Fidem no
 > Observatório de Pernambuco (fonte `sidra_populacao_estimada`), versão

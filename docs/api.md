@@ -14,6 +14,10 @@
 
 ::: condepe.condepe_data
 
+## Citar
+
+::: condepe.condepe_cite
+
 ## Mapas e regiões
 
 ::: condepe.condepe_geometry
