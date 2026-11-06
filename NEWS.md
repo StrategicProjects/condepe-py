@@ -2,6 +2,12 @@
 
 * `condepe_layer(id)`: qualquer camada geográfica publicada no catálogo
   (`terras_indigenas`, `up_perh`…) como `GeoDataFrame`.
+* Catálogo guardado (até 6 h) e versão nova publicada nesse intervalo: o
+  arquivo em `atual/` já não batia com o SHA-256 do catálogo e a chamada
+  falhava com `IntegrityError`. Agora o cliente lê a árvore imutável da
+  própria versão (`<versão>/…` no canônico, tag no espelho) antes de desistir.
+* Guia de mapas com a seção "Camadas geográficas" (rodovias, hidrografia e
+  terras indígenas sobre a malha).
 
 # condepe 0.1.2
 

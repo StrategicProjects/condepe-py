@@ -129,6 +129,28 @@ def test_integrity_error_on_sha_mismatch():
 
 
 @responses.activate
+def test_stale_catalogue_reads_the_versioned_tree():
+    # A newer version replaced `atual/` after the catalogue was cached: the
+    # file there no longer matches, but the version's own tree still does.
+    responses.add(responses.GET, f"{CANON}/catalogo.json", json=_catalog())
+    responses.add(responses.GET, f"{CANON}/{PATH}", body=b"a newer publication")
+    responses.add(responses.GET, f"https://canon.test/{VERSION}/{PATH}", body=PARQUET)
+    df = condepe.condepe_data("sidra_populacao_estimada")
+    assert len(df) == 4 and df.attrs["version"] == VERSION
+
+
+def test_versioned_base_for_each_backend():
+    v = _client.versioned_base
+    assert v("https://cf.pe.gov.br/observatorio/dados/atual", "2026-11-06_1") == (
+        "https://cf.pe.gov.br/observatorio/dados/2026-11-06_1"
+    )
+    assert v("https://huggingface.co/datasets/x/y/resolve/main", "2026-11-06_1") == (
+        "https://huggingface.co/datasets/x/y/resolve/2026-11-06_1"
+    )
+    assert v("https://outro.test/dados", "v") == "https://outro.test/dados/v"
+
+
+@responses.activate
 def test_falls_back_to_mirror():
     responses.add(responses.GET, f"{CANON}/catalogo.json", status=503)
     responses.add(responses.GET, f"{CANON}/{PATH}", status=503)

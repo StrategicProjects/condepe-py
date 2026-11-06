@@ -49,6 +49,12 @@ rd = condepe.condepe_geometry("rd")        # Regiões de Desenvolvimento
 condepe.condepe_regions("regiao_saude")    # a que região pertence cada município
 mapa = condepe.condepe_add_geometry(condepe.condepe_series(
     "sidra_populacao_estimada", "Populacao residente estimada", years=2025))
+
+# Camadas de referência (GeoDataFrame): rodovias do DER-PE, hidrografia da
+# ANA e qualquer camada do catálogo, como as terras indígenas da FUNAI
+condepe.condepe_roads(type="estaduais")
+condepe.condepe_hydrography("reservatorios")
+condepe.condepe_layer("terras_indigenas")
 ```
 
 Os nomes das colunas ficam em português, como publicados, para que todo

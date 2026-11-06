@@ -121,7 +121,7 @@ Name: count, dtype: int64
 
 ## Regiões
 
-        `condepe_regions()` diz a que região pertence cada município em doze
+        `condepe_regions()` diz a que região pertence cada município em onze
         regionalizações: Regiões de Desenvolvimento (RD) da Condepe/Fidem,
         meso e microrregiões e regiões imediatas e intermediárias do IBGE,
         regiões e macrorregiões de saúde, Gerências Regionais de Educação
@@ -294,3 +294,54 @@ d.sort_values("por_100mil", ascending=False)[["nm_municipio", "valor_uti", "por_
 Os leitos concentram-se no Recife, que atende pacientes de toda a
 região: o indicador mede oferta no município, não acesso de quem mora
 nele.
+
+## Camadas geográficas
+
+Além da malha, o Observatório publica camadas de referência em
+GeoParquet, e o pacote as lê como `GeoDataFrame` em WGS 84: a malha
+rodoviária do DER-PE (`condepe_roads()`, por tipo de trecho), a
+hidrografia da ANA (`condepe_hydrography()`: rios, rios principais,
+massas d'água, reservatórios acompanhados e unidades de planejamento)
+e qualquer outra camada do catálogo (`condepe_layer()`, como as
+terras indígenas da FUNAI). Sobrepostas à malha municipal:
+
+```python
+rodovias = condepe.condepe_roads(type=["estaduais", "federais"])
+
+rios = condepe.condepe_hydrography("rios_principais")
+
+reservatorios = condepe.condepe_hydrography("reservatorios")
+
+ti = condepe.condepe_layer("terras_indigenas")
+
+ax = malha.plot(color="#f5f5f5", edgecolor="white", linewidth=0.3, figsize=(8, 4.2))
+
+rios.plot(ax=ax, color="#00B7FF", linewidth=0.5)
+
+reservatorios.plot(ax=ax, color="#0068FF")
+
+rodovias.plot(ax=ax, color="#666666", linewidth=0.35)
+
+ti.plot(ax=ax, color="#FF6700", alpha=0.6)
+
+ax.set_axis_off()
+
+ax.set_title("Rodovias, rios principais, reservatórios e terras indígenas",
+             loc="left", fontsize=10)
+
+print(fig("mapa_camadas"))
+
+{"trechos": len(rodovias), "rios": len(rios), "reservatorios": len(reservatorios),
+ "terras_indigenas": len(ti)}
+```
+
+```text
+{'trechos': 814, 'rios': 965, 'reservatorios': 23, 'terras_indigenas': 16}
+```
+
+![mapa_camadas](assets/mapa_camadas.png)
+
+As camadas vêm no mesmo CRS da malha, então `geopandas.overlay()` e
+`sjoin()` resolvem perguntas como "quantos quilômetros de rodovia
+estadual cruzam cada município" — é assim que o Observatório calcula
+as fontes derivadas `der_malha_rodoviaria` e `ana_hidrografia`.

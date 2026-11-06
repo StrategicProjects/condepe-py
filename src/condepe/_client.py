@@ -99,11 +99,31 @@ def _get(url: str) -> bytes:
     raise HttpError(str(last))
 
 
-def fetch(path: str) -> bytes:
-    """Fetch a relative path from the first backend that answers."""
+def versioned_base(base: str, version: str) -> str:
+    """The backend address of one published *version* (immutable), not of ``atual``.
+
+    The canonical server keeps the last versions beside ``atual/``; the
+    Hugging Face mirror tags each version, so ``resolve/main`` becomes
+    ``resolve/<version>``. Any other base is assumed to keep ``<version>/``
+    next to the current tree.
+    """
+    if base.endswith("/resolve/main"):
+        return f"{base[: -len('main')]}{version}"
+    if base.endswith("/atual"):
+        return f"{base[: -len('atual')]}{version}"
+    return f"{base}/{version}"
+
+
+def fetch(path: str, version: str | None = None) -> bytes:
+    """Fetch a relative path from the first backend that answers.
+
+    With ``version``, the path is read from that version's immutable tree
+    instead of the current one.
+    """
     errors = []
     for base in base_urls():
-        url = f"{base}/{quote(path)}"
+        root = versioned_base(base, version) if version else base
+        url = f"{root}/{quote(path)}"
         try:
             return _get(url)
         except HttpError as exc:
@@ -143,9 +163,18 @@ def cached_file(path: str, sha256: str, version: str, refresh: bool = False) -> 
     raw = fetch(path)
     got = _sha256(raw)
     if got != sha256:
+        # The current tree moved on since this catalogue was cached (a new
+        # version was published): the version's own tree is immutable.
+        try:
+            raw = fetch(path, version=version)
+            got = _sha256(raw)
+        except HttpError:
+            pass
+    if got != sha256:
         raise IntegrityError(
             f"{path}: sha256 {got[:12]}… differs from the catalogue ({sha256[:12]}…). "
-            "The publication may be in progress; try again in a few minutes."
+            "The publication may be in progress; try again in a few minutes, "
+            "or pass refresh=True to re-read the catalogue."
         )
     dest.parent.mkdir(parents=True, exist_ok=True)
     tmp = dest.with_suffix(dest.suffix + ".tmp")
