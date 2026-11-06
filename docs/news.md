@@ -1,4 +1,4 @@
-# condepe 0.1.2 (em desenvolvimento)
+# condepe 0.1.2
 
 * `condepe_roads()`: a malha rodoviária de Pernambuco (DER-PE, SRE 2026-2027,
   com os trechos federais do SNV/DNIT) como `GeoDataFrame` de linhas, lida do
