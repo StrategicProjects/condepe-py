@@ -16,9 +16,17 @@ import pyarrow.parquet as pq
 
 from . import _client, _msg
 
+# Os números são das fontes originais; a Condepe/Fidem os coleta, padroniza
+# e organiza. A citação põe a fonte original primeiro.
 CITATION = (
-    "Condepe/Fidem, Observatório de Pernambuco — Base de Dados do Estado, "
-    "version {version}, https://cf.pe.gov.br/observatorio (CC BY 4.0)."
+    "Fontes originais indicadas em cada série (coluna fonte_original); dados "
+    "coletados, padronizados e organizados pela Condepe/Fidem no Observatório "
+    "de Pernambuco, versão {version}, https://cf.pe.gov.br/observatorio."
+)
+SOURCE_CITATION = (
+    "{fonte_original}. Dados organizados pela Condepe/Fidem no Observatório de "
+    "Pernambuco (fonte {id_fonte}), versão {version}, "
+    "https://cf.pe.gov.br/observatorio/fontes/{id_fonte}."
 )
 
 _CATALOG_COLUMNS = [
@@ -90,6 +98,8 @@ def condepe_data(source: str, refresh: bool = False) -> pd.DataFrame:
         ``valor``, ``unidade``, ``natureza``, ``id_fonte``, ``eixo``, ``tema``,
         ``assunto``, ``fonte_original``, ``arquivo_origem``. Séries mensais
         trazem o período em ``indicador`` (``"… [MM/AAAA]"``) e em ``mes``.
+        ``attrs["citation"]`` traz a citação da fonte original, com o
+        Observatório como organizador.
     """
     cat = _client.catalog_json(refresh=refresh)
     entry = _source_entry(source, cat)
@@ -102,6 +112,9 @@ def condepe_data(source: str, refresh: bool = False) -> pd.DataFrame:
     df = pq.read_table(path).to_pandas()
     df.attrs["version"] = cat["versao"]
     df.attrs["source"] = source
+    df.attrs["citation"] = SOURCE_CITATION.format(
+        fonte_original=entry.get("fonte_original", ""), id_fonte=source, version=cat["versao"]
+    )
     _msg.success(f"{source}: {len(df):,} observations (version {cat['versao']}).")
     return df
 

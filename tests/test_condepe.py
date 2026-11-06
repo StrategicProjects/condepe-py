@@ -96,7 +96,18 @@ def test_catalog_has_version_and_citation():
     cat = condepe.condepe_catalog()
     assert list(cat["id_fonte"]) == ["sidra_populacao_estimada"]
     assert cat.attrs["version"] == VERSION
-    assert "CC BY 4.0" in cat.attrs["citation"]
+    assert "fonte_original" in cat.attrs["citation"]
+    assert VERSION in cat.attrs["citation"]
+
+
+@responses.activate
+def test_data_and_series_cite_the_original_source_first():
+    _servir(CANON)
+    df = condepe.condepe_data("sidra_populacao_estimada")
+    assert df.attrs["citation"].startswith("IBGE. Dados organizados pela Condepe/Fidem")
+    assert "observatorio/fontes/sidra_populacao_estimada" in df.attrs["citation"]
+    s = condepe.condepe_series("sidra_populacao_estimada", "Pop")
+    assert s.attrs["citation"] == df.attrs["citation"]
 
 
 @responses.activate

@@ -3,7 +3,7 @@ site_description: Dados abertos do Observatório de Pernambuco (Condepe/Fidem) n
 site_url: https://strategicprojects.github.io/condepe-py/
 repo_url: https://github.com/StrategicProjects/condepe-py
 repo_name: StrategicProjects/condepe-py
-copyright: Código MIT · Dados CC BY 4.0 Condepe/Fidem
+copyright: Código MIT · Dados das fontes originais, organizados pela Condepe/Fidem (CC BY 4.0)
 
 theme:
   name: material
