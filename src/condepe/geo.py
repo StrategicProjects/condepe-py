@@ -286,6 +286,77 @@ def condepe_geometry(
     return _dissolve(malha, level)
 
 
+ROAD_TYPES = ("estaduais", "federais", "vicinais", "acessos")
+
+
+def condepe_roads(type: str | list[str] | None = None, refresh: bool = False) -> gpd.GeoDataFrame:
+    """Malha rodoviária de Pernambuco.
+
+    Os trechos das rodovias de Pernambuco como ``GeoDataFrame`` de linhas
+    (WGS 84): as estaduais, vicinais e acessos do Sistema Rodoviário Estadual
+    do DER-PE e as federais em Pernambuco (SNV/DNIT), cada trecho com rodovia,
+    denominação, início e fim, quilometragem, extensão, situação física
+    (pavimentada, duplicada, implantada, leito natural, planejada, em obra),
+    revestimento, Diretoria Regional de Operações do DER, Região de
+    Desenvolvimento e municípios atravessados.
+
+    A malha é publicada pelo Observatório junto com os dados abertos
+    (``referencia/rodovias.parquet``, um GeoParquet listado no catálogo) e
+    lida de lá como as fontes: endereço canônico, espelho como reserva,
+    SHA-256 conferido e cache em disco por versão do catálogo. Diferente de
+    :func:`condepe_regions`, não há cópia embutida no pacote. Precisa do
+    geopandas (``pip install "condepe[geo]"``).
+
+    Parameters
+    ----------
+    type:
+        ``None`` (todos os trechos) ou um ou mais de ``"estaduais"``,
+        ``"federais"``, ``"vicinais"`` e ``"acessos"``.
+    refresh:
+        Baixa a malha de novo mesmo que haja cópia conferida em cache.
+
+    Returns
+    -------
+    geopandas.GeoDataFrame
+        Uma linha por trecho (``codigo_sre``, ``rodovia``, ``tipo``,
+        ``situacao``, ``revestimento``, ``extensao_km``, ``dro``,
+        ``municipios``… e a geometria ``MultiLineString``), com
+        ``.attrs["version"]`` igual à versão do catálogo.
+
+    Raises
+    ------
+    CondepeError
+        Se o catálogo publicado ainda não trouxer a malha rodoviária.
+
+    Examples
+    --------
+    >>> rodovias = condepe_roads()                       # doctest: +SKIP
+    >>> rodovias.plot(column="tipo", legend=True)        # doctest: +SKIP
+    >>> pav = rodovias[rodovias["classificacao"] == "PAVIMENTADA"]   # doctest: +SKIP
+    >>> pav.groupby("dro")["extensao_km"].sum()          # doctest: +SKIP
+    """
+    gpd = _gpd()
+    tipos = [type] if isinstance(type, str) else list(type or [])
+    for t in tipos:
+        if t not in ROAD_TYPES:
+            raise ValueError(f"`type` must be one of {', '.join(ROAD_TYPES)}.")
+    cat = _client.catalog_json(refresh=refresh)
+    ref = next((x for x in cat.get("referencias") or [] if x.get("id") == "rodovias"), None)
+    arq = next((a for a in (ref or {}).get("arquivos", []) if a.get("formato") == "parquet"), None)
+    if arq is None:
+        raise _client.CondepeError(
+            f"O catálogo do Observatório (versão {cat.get('versao')}) ainda não traz a malha "
+            "rodoviária; ela entrou nos dados abertos em novembro de 2026 (tente refresh=True)."
+        )
+    local = _client.cached_file(arq["caminho"], arq["sha256"], cat["versao"], refresh=refresh)
+    r = gpd.read_parquet(local)
+    if tipos:
+        r = r[r["tipo"].isin(tipos)].reset_index(drop=True)
+    r.attrs["version"] = cat["versao"]
+    r.attrs["source"] = "DER-PE (SRE); DNIT (SNV)"
+    return r
+
+
 def condepe_add_geometry(
     x: pd.DataFrame,
     level: str = "municipio",

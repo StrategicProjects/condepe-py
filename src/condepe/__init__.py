@@ -35,7 +35,7 @@ from .data import (
     condepe_series,
 )
 from .cite import condepe_cite
-from .geo import condepe_add_geometry, condepe_geometry, condepe_regions
+from .geo import condepe_add_geometry, condepe_geometry, condepe_regions, condepe_roads
 
 __version__ = "0.1.1"
 
@@ -53,6 +53,7 @@ __all__ = [
     "condepe_indicators",
     "condepe_localities",
     "condepe_regions",
+    "condepe_roads",
     "condepe_series",
     "set_timeout",
     "set_verbose",

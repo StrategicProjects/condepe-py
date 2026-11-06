@@ -1,3 +1,10 @@
+# condepe 0.1.2 (em desenvolvimento)
+
+* `condepe_roads()`: a malha rodoviária de Pernambuco (DER-PE, SRE 2026-2027,
+  com os trechos federais do SNV/DNIT) como `GeoDataFrame` de linhas, lida do
+  GeoParquet `referencia/rodovias.parquet` publicado pelo Observatório, com
+  filtro por tipo (estaduais, federais, vicinais, acessos).
+
 # condepe 0.1.1
 
 * Mapas: `condepe_geometry()` (Malha Municipal de Pernambuco da Condepe/Fidem,
