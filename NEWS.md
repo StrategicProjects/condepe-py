@@ -5,8 +5,9 @@
   regiões com `level`; `condepe_regions()` com onze regionalizações (Regiões de
   Desenvolvimento, meso e microrregiões, regiões imediatas e intermediárias,
   regiões e macrorregiões de saúde, GRE, regiões fiscais, DRO do DER, regiões
-  metropolitanas);
-  `condepe_add_geometry()` junta os dados à malha. `geopandas` é opcional
+  metropolitanas), lida da tabela publicada pelo Observatório
+  (`referencia/regioes.parquet`, com cache e SHA-256) ou da cópia embutida,
+  sem rede ou com `offline=True`; `condepe_add_geometry()` junta os dados à malha. `geopandas` é opcional
   (`pip install "condepe[geo]"`).
 * O cache não apaga mais as malhas ao trocar de versão do catálogo.
 * Documentação e site em português; tabela das fontes, no estilo do Notion,

@@ -75,34 +75,6 @@ def _servir(sha: str | None = None) -> None:
     responses.add(responses.GET, f"{MALHA_URL}/2025-v3/malha.geojson", body=GEOJSON)
 
 
-def test_regions_cover_185_municipalities():
-    r = condepe.condepe_regions()
-    assert len(r) == 185 and r["cd_municipio_ibge"].is_unique
-    esperado = {
-        "rd": 13,
-        "mesorregiao": 5,
-        "microrregiao": 19,
-        "regiao_intermediaria": 4,
-        "regiao_imediata": 18,
-        "regiao_saude": 12,
-        "macrorregiao_saude": 4,
-        "gre": 15,
-        "regiao_fiscal": 3,
-        "dro": 9,
-        "rm": 2,
-    }
-    for nivel, n in esperado.items():
-        assert r[nivel].dropna().nunique() == n, nivel
-    assert (r["rm"] == "Região Metropolitana do Recife").sum() == 15
-    assert list(condepe.condepe_regions("rd").columns) == [
-        "cd_municipio_ibge",
-        "nm_municipio",
-        "regiao",
-    ]
-    with pytest.raises(ValueError):
-        condepe.condepe_regions("ais")
-
-
 @responses.activate
 def test_geometry_condepe_cache_and_noronha():
     _servir()

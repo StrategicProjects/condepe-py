@@ -511,8 +511,10 @@ MAPAS = [
         meso e microrregiões e regiões imediatas e intermediárias do IBGE,
         regiões e macrorregiões de saúde, Gerências Regionais de Educação
         (GRE), regiões fiscais da SEFAZ, Diretorias Regionais de Operações (DRO) do DER e regiões
-metropolitanas. A tabela vai
-        com o pacote, sem rede:
+metropolitanas. A tabela é
+        publicada pelo Observatório junto com os dados abertos
+        (`referencia/regioes.parquet`) e lida de lá com cache, como as fontes;
+        sem rede, vale a cópia que vai com o pacote (`offline=True` força essa):
         """,
         """
         reg = condepe.condepe_regions()

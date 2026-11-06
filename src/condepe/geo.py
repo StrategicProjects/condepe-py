@@ -19,7 +19,7 @@ from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
-from . import _client
+from . import _client, _msg
 
 if TYPE_CHECKING:  # pragma: no cover
     import geopandas as gpd
@@ -53,7 +53,42 @@ def _gpd():
     return geopandas
 
 
-def condepe_regions(level: str | None = None) -> pd.DataFrame:
+def _regions_bundled() -> pd.DataFrame:
+    """A cópia que vai com o pacote."""
+    with resources.files("condepe").joinpath("data/regioes.csv").open("rb") as f:
+        r = pd.read_csv(f, dtype=str, keep_default_na=False, na_values=[""])
+    r.attrs["version"] = "embutida"
+    return r
+
+
+def _regions_published(refresh: bool) -> pd.DataFrame | None:
+    """A tabela publicada (catálogo → ``referencias`` → ``regioes``), ou ``None``
+    quando o catálogo não a traz ou o Observatório não responde."""
+    try:
+        cat = _client.catalog_json(refresh=refresh)
+        ref = next((x for x in cat.get("referencias") or [] if x.get("id") == "regioes"), None)
+        arq = next(
+            (a for a in (ref or {}).get("arquivos", []) if a.get("formato") == "parquet"), None
+        )
+        if arq is None:
+            return None
+        local = _client.cached_file(arq["caminho"], arq["sha256"], cat["versao"], refresh=refresh)
+    except _client.HttpError:
+        return None
+    r = pd.read_parquet(local)
+    esperado = list(_regions_bundled().columns)
+    if not set(esperado) <= set(r.columns):
+        return None  # formato diferente do que este pacote conhece: fica a embutida
+    # Mesmos tipos da cópia embutida: texto, ausência como NaN.
+    r = r[esperado + [c for c in r.columns if c not in esperado]].astype(object)
+    r = r.mask(r.isna()).sort_values("cd_municipio_ibge").reset_index(drop=True)
+    r.attrs["version"] = cat["versao"]
+    return r
+
+
+def condepe_regions(
+    level: str | None = None, refresh: bool = False, offline: bool = False
+) -> pd.DataFrame:
     """Regionalizações dos municípios de Pernambuco.
 
     A que região pertence cada município em onze regionalizações oficiais:
@@ -61,35 +96,51 @@ def condepe_regions(level: str | None = None) -> pd.DataFrame:
     ``microrregiao``, ``regiao_intermediaria`` e ``regiao_imediata`` (IBGE),
     ``regiao_saude`` e ``macrorregiao_saude`` (SES-PE), ``gre`` (Gerências
     Regionais de Educação da SEE-PE; Recife Norte e Recife Sul ficam juntas,
-    porque dividem o mesmo município), ``regiao_fiscal`` (SEFAZ-PE), ``dro`` (Diretorias Regionais de
-    Operações do DER-PE) e ``rm``
-    (regiões metropolitanas). A tabela vai com o pacote, sem rede.
+    porque dividem o mesmo município), ``regiao_fiscal`` (SEFAZ-PE), ``dro``
+    (Diretorias Regionais de Operações do DER-PE) e ``rm`` (regiões
+    metropolitanas).
+
+    A tabela é publicada pelo Observatório junto com os dados abertos
+    (``referencia/regioes.parquet``, listada no catálogo) e é lida de lá como
+    as fontes: endereço canônico, espelho como reserva, SHA-256 conferido e
+    cache em disco por versão do catálogo. Sem rede, ou com ``offline=True``,
+    vale a cópia que vai com o pacote.
 
     Parameters
     ----------
     level:
         ``None`` (todas, uma coluna por regionalização) ou uma delas.
+    refresh:
+        Baixa a tabela de novo mesmo que haja cópia conferida em cache.
+    offline:
+        Usa só a cópia embutida no pacote, sem rede.
 
     Returns
     -------
     pandas.DataFrame
         ``cd_municipio_ibge``, ``nm_municipio`` e as colunas de região (ou só
         ``regiao``, se ``level`` for dado). Municípios fora de uma região
-        metropolitana ficam com ``NA`` em ``rm``.
+        metropolitana ficam com ``NA`` em ``rm``. ``.attrs["version"]`` diz de
+        onde veio: a versão do catálogo ou ``"embutida"``.
 
     Examples
     --------
-    >>> condepe_regions("rd")["regiao"].nunique()
+    >>> condepe_regions("rd", offline=True)["regiao"].nunique()
     13
     """
-    with resources.files("condepe").joinpath("data/regioes.csv").open("rb") as f:
-        r = pd.read_csv(f, dtype=str, keep_default_na=False, na_values=[""])
+    if level is not None and level not in LEVELS:
+        raise ValueError(f"`level` must be one of {', '.join(LEVELS)}.")
+    r = None if offline else _regions_published(refresh)
+    if r is None:
+        if not offline:
+            _msg.step("Usando a tabela de regiões embutida no pacote.")
+        r = _regions_bundled()
     if level is None:
         return r
-    if level not in LEVELS:
-        raise ValueError(f"`level` must be one of {', '.join(LEVELS)}.")
     out = r[["cd_municipio_ibge", "nm_municipio", level]].rename(columns={level: "regiao"})
-    return out.reset_index(drop=True)
+    out = out.reset_index(drop=True)
+    out.attrs["version"] = r.attrs["version"]
+    return out
 
 
 def _sha256(raw: bytes) -> str:
