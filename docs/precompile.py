@@ -652,15 +652,20 @@ metropolitanas. A tabela é
 
         ti = condepe.condepe_layer("terras_indigenas")
 
+        # As camadas cobrem o Estado inteiro, Noronha inclusive; recorte ao continente
+        xmin, ymin, xmax, ymax = malha.total_bounds
+
+        recorte = lambda g: g.cx[xmin:xmax, ymin:ymax]  # noqa: E731
+
         ax = malha.plot(color="#f5f5f5", edgecolor="white", linewidth=0.3, figsize=(8, 4.2))
 
-        rios.plot(ax=ax, color="#00B7FF", linewidth=0.5)
+        recorte(rios).plot(ax=ax, color="#00B7FF", linewidth=0.5)
 
-        reservatorios.plot(ax=ax, color="#0068FF")
+        recorte(rodovias).plot(ax=ax, color="#666666", linewidth=0.35)
 
-        rodovias.plot(ax=ax, color="#666666", linewidth=0.35)
+        recorte(reservatorios).plot(ax=ax, color="#0068FF", markersize=14)
 
-        ti.plot(ax=ax, color="#FF6700", alpha=0.6)
+        recorte(ti).plot(ax=ax, color="#FF6700", alpha=0.7)
 
         ax.set_axis_off()
 
