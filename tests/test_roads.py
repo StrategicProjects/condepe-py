@@ -103,3 +103,12 @@ def test_hydrography_reads_a_layer_and_rejects_unknown_ones():
         condepe.condepe_hydrography("uph")
     with pytest.raises(ValueError):
         condepe.condepe_hydrography("lagos")
+
+
+@responses.activate
+def test_layer_reads_any_geo_reference_by_id():
+    _servir()
+    r = condepe.condepe_layer("reservatorios")
+    assert isinstance(r, gpd.GeoDataFrame) and len(r) == 3
+    with pytest.raises(_client.CondepeError, match="inexistente"):
+        condepe.condepe_layer("inexistente")

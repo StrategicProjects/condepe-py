@@ -1,3 +1,8 @@
+# condepe 0.1.3 (em desenvolvimento)
+
+* `condepe_layer(id)`: qualquer camada geográfica publicada no catálogo
+  (`terras_indigenas`, `up_perh`…) como `GeoDataFrame`.
+
 # condepe 0.1.2
 
 * `condepe_roads()`: a malha rodoviária de Pernambuco (DER-PE, SRE 2026-2027,

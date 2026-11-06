@@ -39,6 +39,7 @@ from .geo import (
     condepe_add_geometry,
     condepe_geometry,
     condepe_hydrography,
+    condepe_layer,
     condepe_regions,
     condepe_roads,
 )
@@ -57,6 +58,7 @@ __all__ = [
     "condepe_data",
     "condepe_geometry",
     "condepe_hydrography",
+    "condepe_layer",
     "condepe_indicators",
     "condepe_localities",
     "condepe_regions",

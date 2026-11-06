@@ -419,6 +419,37 @@ def condepe_hydrography(layer: str, refresh: bool = False) -> gpd.GeoDataFrame:
     return r
 
 
+def condepe_layer(id: str, refresh: bool = False) -> gpd.GeoDataFrame:
+    """Camada geográfica publicada pelo Observatório.
+
+    Lê qualquer tabela de referência com geometria publicada nos dados
+    abertos (``referencia/<id>.parquet``, GeoParquet listado no catálogo)
+    como ``GeoDataFrame``: além das que têm função própria
+    (:func:`condepe_roads`, :func:`condepe_hydrography`), as camadas
+    territoriais — ``"terras_indigenas"`` (FUNAI) e ``"up_perh"`` (Unidades
+    de Planejamento do PERH, APAC). A lista corrente está em
+    :func:`condepe_catalog` (``referencias``).
+
+    Parameters
+    ----------
+    id:
+        Identificador da camada no catálogo.
+    refresh:
+        Baixa a camada de novo mesmo que haja cópia conferida em cache.
+
+    Returns
+    -------
+    geopandas.GeoDataFrame
+        As colunas publicadas e a geometria, com ``.attrs["version"]``.
+
+    Examples
+    --------
+    >>> tis = condepe_layer("terras_indigenas")              # doctest: +SKIP
+    >>> tis[["nome", "etnia", "fase", "area_ha"]]            # doctest: +SKIP
+    """
+    return _geo_reference(id, refresh, f"a camada {id!r}")
+
+
 def condepe_add_geometry(
     x: pd.DataFrame,
     level: str = "municipio",
