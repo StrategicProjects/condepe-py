@@ -1,0 +1,2635 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python">
+      
+      
+      
+        <link rel="canonical" href="https://strategicprojects.github.io/condepe-py/api/">
+      
+      
+        <link rel="prev" href="../fontes/">
+      
+      
+        <link rel="next" href="../news/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Referência das funções - condepe</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#referencia-das-funcoes" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="condepe" class="md-header__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            condepe
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Referência das funções
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="condepe" class="md-nav__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    condepe
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fontes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fontes do Observatório
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência das funções
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência das funções
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descobrir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descobrir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_indicators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_localities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_localities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obter-os-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obter os dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_series
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapas-e-regioes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapas e regiões
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_add_geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_add_geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_regions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_roads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_roads
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_hydrography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_hydrography
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-e-configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache e configuração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cache_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cache_dir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cache_clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cache_clear
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.set_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.set_verbose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_verbose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.CondepeError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CondepeError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.HttpError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HttpError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.IntegrityError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IntegrityError
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descobrir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descobrir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_indicators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_localities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_localities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obter-os-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obter os dados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_series
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapas-e-regioes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapas e regiões
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_add_geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_add_geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_regions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_roads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_roads
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_hydrography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_hydrography
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-e-configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache e configuração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cache_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cache_dir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.condepe_cache_clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        condepe_cache_clear
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.set_timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.set_verbose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_verbose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Erros
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.CondepeError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CondepeError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.HttpError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HttpError
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condepe.IntegrityError" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IntegrityError
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="referencia-das-funcoes">Referência das funções<a class="headerlink" href="#referencia-das-funcoes" title="Permanent link">&para;</a></h1>
+<h2 id="descobrir">Descobrir<a class="headerlink" href="#descobrir" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_catalog" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_catalog</span><span class="p">(</span><span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_catalog" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Fontes publicadas pelo Observatório.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Ignora o catálogo em cache (válido por 6 horas) e consulta o servidor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Uma linha por fonte (<code>id_fonte</code>), com eixo, tema, descrição, órgão
+de origem, número de linhas, de indicadores e de localidades, e os
+anos cobertos. <code>attrs["version"]</code> traz a versão do catálogo e
+<code>attrs["citation"]</code>, a citação.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_indicators" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_indicators</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_indicators" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Indicadores de uma fonte, com unidade, cobertura e periodicidade.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identificador da fonte (veja :func:<code>condepe_catalog</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a fonte de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Uma linha por <code>indicador_base</code>, com <code>unidade</code>, <code>natureza</code>,
+<code>mensal</code> (série mensal), número de observações e de localidades, e
+primeiro e último ano.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_localities" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_localities</span><span class="p">(</span><span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_localities" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Os 185 municípios de Pernambuco e o Estado, com código IBGE.</p>
+<p>Tirados da fonte de estimativas de população, que cobre todos os
+municípios (Fernando de Noronha incluído); o Estado (<code>"26"</code>) vem
+primeiro.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a fonte de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>cd_municipio_ibge</code> e <code>nm_municipio</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div><h2 id="obter-os-dados">Obter os dados<a class="headerlink" href="#obter-os-dados" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_series" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">indicator</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_series" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Série de um ou mais indicadores, filtrada por localidade e ano se pedido.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identificador da fonte (veja :func:<code>condepe_catalog</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>indicator</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="collections.abc.Iterable">Iterable</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Um ou mais valores de <code>indicador_base</code>, exatamente como listados por
+:func:<code>condepe_indicators</code>.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>code</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="collections.abc.Iterable">Iterable</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Códigos IBGE: 7 dígitos para municípios, <code>"26"</code> para o Estado.
+<code>None</code> mantém todas as localidades.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>years</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span> | <span title="collections.abc.Iterable">Iterable</span>[<span title="int">int</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Um ano ou uma coleção de anos; <code>None</code> mantém todos.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a fonte de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>As observações que atendem aos filtros, ordenadas por localidade, ano
+e mês.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_data</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_data" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Uma fonte inteira (todos os indicadores, localidades e períodos).</p>
+<p>O arquivo Parquet fica no cache em disco para a versão corrente do
+catálogo e é conferido pelo SHA-256 publicado no catálogo.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identificador da fonte, por exemplo <code>"sidra_populacao_estimada"</code>
+(veja :func:<code>condepe_catalog</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>As 15 colunas do formato longo do Observatório: <code>cd_municipio_ibge</code>,
+<code>nm_municipio</code>, <code>ano</code>, <code>mes</code>, <code>indicador</code>, <code>indicador_base</code>,
+<code>valor</code>, <code>unidade</code>, <code>natureza</code>, <code>id_fonte</code>, <code>eixo</code>, <code>tema</code>,
+<code>assunto</code>, <code>fonte_original</code>, <code>arquivo_origem</code>. Séries mensais
+trazem o período em <code>indicador</code> (<code>"… [MM/AAAA]"</code>) e em <code>mes</code>.
+<code>attrs["citation"]</code> traz a citação da fonte original, com o
+Observatório como organizador.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div><h2 id="citar">Citar<a class="headerlink" href="#citar" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_cite" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_cite</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_cite" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Citação dos dados: a fonte original primeiro, o Observatório como organizador.</p>
+<p>Os números do Observatório são das fontes originais (IBGE, Ministério da
+Saúde, INEP, ...); a Condepe/Fidem os coleta, padroniza e organiza.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>x</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span> | <span title="str">str</span> | <span title="collections.abc.Iterable">Iterable</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Um resultado de :func:<code>condepe_data</code> ou :func:<code>condepe_series</code> — também
+depois de filtrar ou concatenar: a citação sai das colunas
+<code>id_fonte</code> e <code>fonte_original</code>, uma por fonte presente; ou um ou
+mais identificadores de fonte, procurados no catálogo; ou nada, para a
+citação do acervo inteiro.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.Series">Series</span> | <span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Uma citação por fonte, indexada pelo <code>id_fonte</code>; ou, sem <code>x</code>, a
+citação do acervo.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">condepe_data</span><span class="p">(</span><span class="s2">"sidra_populacao_estimada"</span><span class="p">)</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">condepe_cite</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condepe_cite</span><span class="p">(</span><span class="s2">"datasus_sinasc"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condepe_cite</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div><h2 id="mapas-e-regioes">Mapas e regiões<a class="headerlink" href="#mapas-e-regioes" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_geometry" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_geometry</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">'municipio'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">'condepe'</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="s1">'intermediaria'</span><span class="p">,</span> <span class="n">noronha</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_geometry" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Malha municipal de Pernambuco, ou dissolvida numa regionalização.</p>
+<p>Duas origens: <code>"condepe"</code> (padrão), a Malha Municipal de Pernambuco
+publicada pela Condepe/Fidem em https://cf.pe.gov.br/dados, na edição
+corrente do manifesto (conferida pelo SHA-256 e guardada em cache; a
+versão fica em <code>.attrs["version"]</code>); ou <code>"ibge"</code>, a API de malhas do
+IBGE na qualidade pedida. Com <code>level</code>, os municípios são dissolvidos na
+regionalização pedida (veja :func:<code>condepe_regions</code>), com as mesmas divisas.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"municipio"</code> (padrão) ou uma regionalização de
+:func:<code>condepe_regions</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;municipio&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"condepe"</code> ou <code>"ibge"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;condepe&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>quality</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Só para <code>source="ibge"</code>: <code>"intermediaria"</code>, <code>"minima"</code> ou <code>"maxima"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;intermediaria&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>noronha</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Se <code>False</code>, deixa de fora Fernando de Noronha (2605459), que fica a
+545 km da costa e espreme o continente nos mapas do estado.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa de novo mesmo que haja cópia em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="geopandas.GeoDataFrame">GeoDataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>cd_municipio_ibge</code>, <code>nm_municipio</code> e a geometria (WGS 84); com
+<code>level</code>, <code>regiao</code>, <code>n_municipios</code> e a geometria.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">malha</span> <span class="o">=</span> <span class="n">condepe_geometry</span><span class="p">(</span><span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rd</span> <span class="o">=</span> <span class="n">condepe_geometry</span><span class="p">(</span><span class="s2">"rd"</span><span class="p">,</span> <span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"regiao"</span><span class="p">)</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_add_geometry" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">'municipio'</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_add_geometry" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Junta dados do Observatório à malha, pronta para mapear.</p>
+<p>Recebe qualquer resultado do pacote com <code>cd_municipio_ibge</code>
+(:func:<code>condepe_series</code>, :func:<code>condepe_data</code> ou uma agregação) e devolve
+um <code>GeoDataFrame</code> com uma linha por observação. Linhas do Estado
+(<code>"26"</code>) são descartadas. Para mapear regiões, agregue os dados numa
+coluna <code>regiao</code> (juntando :func:<code>condepe_regions</code>) e passe <code>level</code>.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>x</code>
+            </td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame com <code>cd_municipio_ibge</code> (ou <code>regiao</code>, com <code>level</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Como em :func:<code>condepe_geometry</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;municipio&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>geometry</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A malha; por padrão <code>condepe_geometry(level, **kwargs)</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>how</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>"left"</code> (padrão) mantém as áreas sem dado, com <code>NaN</code>;
+<code>"inner"</code> as descarta.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;left&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Repassados a :func:<code>condepe_geometry</code> quando <code>geometry</code> não é dada
+(por exemplo, <code>source="ibge"</code> ou <code>noronha=False</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">tmi</span> <span class="o">=</span> <span class="n">condepe_series</span><span class="p">(</span><span class="s2">"datasus_mortalidade_infantil"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">"Taxa de mortalidade infantil (por mil nascidos vivos)"</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">tmi</span><span class="p">,</span> <span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">)</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_regions" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_regions</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">offline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_regions" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Regionalizações dos municípios de Pernambuco.</p>
+<p>A que região pertence cada município em doze regionalizações oficiais:
+<code>rd</code> (Regiões de Desenvolvimento da Condepe/Fidem), <code>mesorregiao</code>,
+<code>microrregiao</code>, <code>regiao_intermediaria</code> e <code>regiao_imediata</code> (IBGE),
+<code>regiao_saude</code> e <code>macrorregiao_saude</code> (SES-PE), <code>gre</code> (Gerências
+Regionais de Educação da SEE-PE; Recife Norte e Recife Sul ficam juntas,
+porque dividem o mesmo município), <code>regiao_fiscal</code> (SEFAZ-PE), <code>dro</code>
+(Diretorias Regionais de Operações do DER-PE) e <code>rm</code> (regiões
+metropolitanas).</p>
+<p>A tabela é publicada pelo Observatório junto com os dados abertos
+(<code>referencia/regioes.parquet</code>, listada no catálogo) e é lida de lá como
+as fontes: endereço canônico, espelho como reserva, SHA-256 conferido e
+cache em disco por versão do catálogo. Sem rede, ou com <code>offline=True</code>,
+vale a cópia que vai com o pacote.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> (todas, uma coluna por regionalização) ou uma delas.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a tabela de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offline</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Usa só a cópia embutida no pacote, sem rede.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>cd_municipio_ibge</code>, <code>nm_municipio</code> e as colunas de região (ou só
+<code>regiao</code>, se <code>level</code> for dado). Municípios fora de uma região
+metropolitana ficam com <code>NA</code> em <code>rm</code>. <code>.attrs["version"]</code> diz de
+onde veio: a versão do catálogo ou <code>"embutida"</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">condepe_regions</span><span class="p">(</span><span class="s2">"rd"</span><span class="p">,</span> <span class="n">offline</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s2">"regiao"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="go">13</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_roads" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_roads</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_roads" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Malha rodoviária de Pernambuco.</p>
+<p>Os trechos das rodovias de Pernambuco como <code>GeoDataFrame</code> de linhas
+(WGS 84): as estaduais, vicinais e acessos do Sistema Rodoviário Estadual
+do DER-PE e as federais em Pernambuco (SNV/DNIT), cada trecho com rodovia,
+denominação, início e fim, quilometragem, extensão, situação física
+(pavimentada, duplicada, implantada, leito natural, planejada, em obra),
+revestimento, Diretoria Regional de Operações do DER, Região de
+Desenvolvimento e municípios atravessados.</p>
+<p>A malha é publicada pelo Observatório junto com os dados abertos
+(<code>referencia/rodovias.parquet</code>, um GeoParquet listado no catálogo) e
+lida de lá como as fontes: endereço canônico, espelho como reserva,
+SHA-256 conferido e cache em disco por versão do catálogo. Diferente de
+:func:<code>condepe_regions</code>, não há cópia embutida no pacote. Precisa do
+geopandas (<code>pip install "condepe[geo]"</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>type</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="list">list</span>[<span title="str">str</span>] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> (todos os trechos) ou um ou mais de <code>"estaduais"</code>,
+<code>"federais"</code>, <code>"vicinais"</code> e <code>"acessos"</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a malha de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="geopandas.GeoDataFrame">GeoDataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Uma linha por trecho (<code>codigo_sre</code>, <code>rodovia</code>, <code>tipo</code>,
+<code>situacao</code>, <code>revestimento</code>, <code>extensao_km</code>, <code>dro</code>,
+<code>municipios</code>… e a geometria <code>MultiLineString</code>), com
+<code>.attrs["version"]</code> igual à versão do catálogo.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="condepe.CondepeError (condepe._client.CondepeError)" href="#condepe.CondepeError">CondepeError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Se o catálogo publicado ainda não trouxer a malha rodoviária.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">rodovias</span> <span class="o">=</span> <span class="n">condepe_roads</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rodovias</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"tipo"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pav</span> <span class="o">=</span> <span class="n">rodovias</span><span class="p">[</span><span class="n">rodovias</span><span class="p">[</span><span class="s2">"classificacao"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"PAVIMENTADA"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pav</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"dro"</span><span class="p">)[</span><span class="s2">"extensao_km"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_hydrography" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_hydrography</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_hydrography" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Hidrografia de Pernambuco.</p>
+<p>Camadas da Agência Nacional de Águas recortadas para Pernambuco, como
+<code>GeoDataFrame</code> (WGS 84): <code>rios</code> (rios e riachos, BHO nível Otto 5),
+<code>rios_principais</code> (nível 3), <code>massas_dagua</code> (açudes, lagoas e
+reservatórios), <code>reservatorios</code> (os acompanhados pela ANA no semiárido,
+pontos com capacidade e demandas) e <code>uph</code> (Unidades de Planejamento
+Hídrico que alcançam o Estado).</p>
+<p>As camadas são publicadas pelo Observatório junto com os dados abertos
+(<code>referencia/&lt;camada&gt;.parquet</code>, GeoParquet listado no catálogo) e lidas
+de lá como as fontes: endereço canônico, espelho como reserva, SHA-256
+conferido e cache em disco por versão do catálogo. Precisa do geopandas
+(<code>pip install "condepe[geo]"</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>layer</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Uma das camadas acima.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a camada de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="geopandas.GeoDataFrame">GeoDataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>As colunas publicadas e a geometria (linhas, polígonos ou pontos
+conforme a camada), com <code>.attrs["version"]</code> igual à versão do
+catálogo.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">rios</span> <span class="o">=</span> <span class="n">condepe_hydrography</span><span class="p">(</span><span class="s2">"rios_principais"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acudes</span> <span class="o">=</span> <span class="n">condepe_hydrography</span><span class="p">(</span><span class="s2">"reservatorios"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">acudes</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"volume_maximo_m3"</span><span class="p">)[[</span><span class="s2">"nome"</span><span class="p">,</span> <span class="s2">"municipio"</span><span class="p">]]</span>
+</code></pre></div>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_layer" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_layer</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#condepe.condepe_layer" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Camada geográfica publicada pelo Observatório.</p>
+<p>Lê qualquer tabela de referência com geometria publicada nos dados
+abertos (<code>referencia/&lt;id&gt;.parquet</code>, GeoParquet listado no catálogo)
+como <code>GeoDataFrame</code>: além das que têm função própria
+(:func:<code>condepe_roads</code>, :func:<code>condepe_hydrography</code>), as camadas
+territoriais — <code>"terras_indigenas"</code> (FUNAI) e <code>"up_perh"</code> (Unidades
+de Planejamento do PERH, APAC). A lista corrente está em
+:func:<code>condepe_catalog</code> (<code>referencias</code>).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identificador da camada no catálogo.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refresh</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Baixa a camada de novo mesmo que haja cópia conferida em cache.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="geopandas.GeoDataFrame">GeoDataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>As colunas publicadas e a geometria, com <code>.attrs["version"]</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">tis</span> <span class="o">=</span> <span class="n">condepe_layer</span><span class="p">(</span><span class="s2">"terras_indigenas"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tis</span><span class="p">[[</span><span class="s2">"nome"</span><span class="p">,</span> <span class="s2">"etnia"</span><span class="p">,</span> <span class="s2">"fase"</span><span class="p">,</span> <span class="s2">"area_ha"</span><span class="p">]]</span>
+</code></pre></div>
+
+
+    </div>
+
+</div><h2 id="cache-e-configuracao">Cache e configuração<a class="headerlink" href="#cache-e-configuracao" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_cache_dir" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_cache_dir</span><span class="p">()</span></code>
+
+<a href="#condepe.condepe_cache_dir" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Pasta do cache em disco (<code>CONDEPE_CACHE_DIR</code> a substitui).</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.condepe_cache_clear" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_cache_clear</span><span class="p">()</span></code>
+
+<a href="#condepe.condepe_cache_clear" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Apaga todo o cache e devolve a pasta.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.set_timeout" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">set_timeout</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">60.0</span><span class="p">)</span></code>
+
+<a href="#condepe.set_timeout" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Define o tempo limite, em segundos, de cada requisição HTTP.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="condepe.set_verbose" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">condepe</span><span class="o">.</span><span class="n">set_verbose</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span></code>
+
+<a href="#condepe.set_verbose" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Liga ou desliga as mensagens informativas.</p>
+
+
+    </div>
+
+</div><h2 id="erros">Erros<a class="headerlink" href="#erros" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="condepe.CondepeError" class="doc doc-heading">
+            <code>condepe.CondepeError</code>
+
+
+<a href="#condepe.CondepeError" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="RuntimeError">RuntimeError</span></code></p>
+
+
+
+        <p>Classe base dos erros do condepe.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="condepe.HttpError" class="doc doc-heading">
+            <code>condepe.HttpError</code>
+
+
+<a href="#condepe.HttpError" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="condepe.CondepeError (condepe._client.CondepeError)" href="#condepe.CondepeError">CondepeError</a></code></p>
+
+
+
+        <p>Nem o endereço canônico nem o espelho responderam.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="condepe.IntegrityError" class="doc doc-heading">
+            <code>condepe.IntegrityError</code>
+
+
+<a href="#condepe.IntegrityError" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="condepe.CondepeError (condepe._client.CondepeError)" href="#condepe.CondepeError">CondepeError</a></code></p>
+
+
+
+        <p>Um arquivo baixado não confere com o SHA-256 do catálogo.</p>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Código MIT · Dados das fontes originais, organizados pela Condepe/Fidem (CC BY 4.0)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,841 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python">
+      
+      
+      
+        <link rel="canonical" href="https://strategicprojects.github.io/condepe-py/exemplos/">
+      
+      
+        <link rel="prev" href="../primeiros-passos/">
+      
+      
+        <link rel="next" href="../mapas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Exemplos - condepe</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exemplos" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="condepe" class="md-header__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            condepe
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Exemplos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="condepe" class="md-nav__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    condepe
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mortalidade-infantil-nas-maiores-cidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mortalidade infantil nas maiores cidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-movimentada-no-porto-de-suape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga movimentada no Porto de Suape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideb-das-escolas-municipais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDEB das escolas municipais
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todos-os-municipios-num-ano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Todos os municípios num ano
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mapas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fontes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fontes do Observatório
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência das funções
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mortalidade-infantil-nas-maiores-cidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mortalidade infantil nas maiores cidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carga-movimentada-no-porto-de-suape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carga movimentada no Porto de Suape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideb-das-escolas-municipais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDEB das escolas municipais
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todos-os-municipios-num-ano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Todos os municípios num ano
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="exemplos">Exemplos<a class="headerlink" href="#exemplos" title="Permanent link">&para;</a></h1>
+<p>Os gráficos usam o matplotlib, que não é dependência do pacote
+(<code>pip install matplotlib</code>). As cores são as do Observatório: o azul
+institucional de Pernambuco e os acentos da paleta oficial.</p>
+<h2 id="mortalidade-infantil-nas-maiores-cidades">Mortalidade infantil nas maiores cidades<a class="headerlink" href="#mortalidade-infantil-nas-maiores-cidades" title="Permanent link">&para;</a></h2>
+<p>Óbitos de menores de um ano por mil nascidos vivos, por município de
+residência:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cidades</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2611606"</span><span class="p">,</span> <span class="s2">"2607901"</span><span class="p">,</span> <span class="s2">"2604106"</span><span class="p">,</span> <span class="s2">"2611101"</span><span class="p">]</span>
+
+<span class="n">tmi</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span>
+    <span class="s2">"datasus_mortalidade_infantil"</span><span class="p">,</span>
+    <span class="s2">"Taxa de mortalidade infantil (por mil nascidos vivos)"</span><span class="p">,</span>
+    <span class="n">code</span><span class="o">=</span><span class="n">cidades</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">largo</span> <span class="o">=</span> <span class="n">tmi</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"ano"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"nm_municipio"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">)</span>
+
+<span class="n">largo</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nm_municipio  Caruaru  Jaboatão dos Guararapes  Petrolina  Recife
+ano                                                              
+2017            11.98                    10.63      15.30   10.83
+2018            10.73                    12.08      15.20   10.53
+2019             9.62                    11.59      18.07   11.50
+2020             9.74                    12.19      14.02   11.20
+2021            10.62                    12.12      15.40   10.03
+2022            13.17                    13.96      14.86   10.93
+2023            12.64                    13.41      14.28   12.32
+2024            11.35                    13.87      16.36   11.85
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">ax</span> <span class="o">=</span> <span class="n">largo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">'#0c2856'</span><span class="p">,</span> <span class="s1">'#0068ff'</span><span class="p">,</span> <span class="s1">'#00b7ff'</span><span class="p">,</span> <span class="s1">'#ff6700'</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+                <span class="n">title</span><span class="o">=</span><span class="s2">"Mortalidade infantil"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"por mil nascidos vivos"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"tmi"</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="tmi" src="../assets/tmi.png" /></p>
+<h2 id="carga-movimentada-no-porto-de-suape">Carga movimentada no Porto de Suape<a class="headerlink" href="#carga-movimentada-no-porto-de-suape" title="Permanent link">&para;</a></h2>
+<p>Carga bruta mensal em Suape (Ipojuca), em milhões de toneladas. Janeiro
+de 2022 não foi publicado pelo porto e aparece como lacuna:</p>
+<div class="highlight"><pre><span></span><code><span class="n">suape</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"porto_suape_carga"</span><span class="p">,</span> <span class="s2">"Porto de Suape - Carga bruta total"</span><span class="p">)</span>
+
+<span class="n">suape</span><span class="p">[</span><span class="s2">"data"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">suape</span><span class="p">[</span><span class="s2">"ano"</span><span class="p">],</span> <span class="n">month</span><span class="o">=</span><span class="n">suape</span><span class="p">[</span><span class="s2">"mes"</span><span class="p">],</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">serie</span> <span class="o">=</span> <span class="n">suape</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)[</span><span class="s2">"valor"</span><span class="p">]</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">"MS"</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">serie</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"#0c2856"</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Porto de Suape, carga bruta"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"milhões de toneladas"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"suape"</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="suape" src="../assets/suape.png" /></p>
+<p>Carga por espécie em cada ano com os 12 meses publicados (2022, sem
+janeiro, e o ano corrente ficam de fora):</p>
+<div class="highlight"><pre><span></span><code><span class="n">especies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Granel líquido"</span><span class="p">,</span> <span class="s2">"Granel sólido"</span><span class="p">,</span>
+            <span class="s2">"Carga conteinerizada (peso bruto)"</span><span class="p">,</span> <span class="s2">"Carga geral solta"</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"porto_suape_carga"</span><span class="p">,</span>
+                           <span class="p">[</span><span class="s2">"Porto de Suape - "</span> <span class="o">+</span> <span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">especies</span><span class="p">])</span>
+
+<span class="n">meses</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"ano"</span><span class="p">)[</span><span class="s2">"mes"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s2">"ano"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">meses</span><span class="p">[</span><span class="n">meses</span> <span class="o">==</span> <span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+<span class="n">anual</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"ano"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"indicador_base"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">,</span>
+                      <span class="n">aggfunc</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span>
+
+<span class="n">anual</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Porto de Suape - "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">anual</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">anual</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">'#0c2856'</span><span class="p">,</span> <span class="s1">'#0068ff'</span><span class="p">,</span> <span class="s1">'#00b7ff'</span><span class="p">,</span> <span class="s1">'#ff6700'</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s2">"Suape, carga por espécie"</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"milhões de toneladas"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"suape_especies"</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="suape_especies" src="../assets/suape_especies.png" /></p>
+<h2 id="ideb-das-escolas-municipais">IDEB das escolas municipais<a class="headerlink" href="#ideb-das-escolas-municipais" title="Permanent link">&para;</a></h2>
+<p>O Índice de Desenvolvimento da Educação Básica dos anos iniciais do
+ensino fundamental, rede municipal, no Recife:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ideb</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span>
+    <span class="s2">"inep_ideb_anos_iniciais"</span><span class="p">,</span> <span class="s2">"IDEB observado - Municipal"</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">"2611606"</span>
+<span class="p">)</span>
+
+<span class="n">ideb</span><span class="p">[[</span><span class="s2">"ano"</span><span class="p">,</span> <span class="s2">"valor"</span><span class="p">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>     ano  valor
+0   2005    3.2
+1   2007    3.8
+2   2009    4.1
+3   2011    4.1
+4   2013    4.2
+5   2015    4.6
+6   2017    5.0
+7   2019    5.2
+8   2021    5.3
+9   2023    5.5
+10  2025    5.8
+</code></pre></div>
+<h2 id="todos-os-municipios-num-ano">Todos os municípios num ano<a class="headerlink" href="#todos-os-municipios-num-ano" title="Permanent link">&para;</a></h2>
+<p>Nascidos vivos por município de residência em 2024, os dez maiores, e
+a proporção de partos cesáreos, cruzando dois indicadores da mesma
+fonte:</p>
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="o">=</span> <span class="s2">"Nascidos vivos por residência - Total"</span>
+
+<span class="n">cesareo</span> <span class="o">=</span> <span class="s2">"Nascidos vivos por residência - Parto cesáreo"</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"datasus_sinasc"</span><span class="p">,</span> <span class="p">[</span><span class="n">total</span><span class="p">,</span> <span class="n">cesareo</span><span class="p">],</span> <span class="n">years</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"nm_municipio"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"indicador_base"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">)</span>
+
+<span class="n">w</span><span class="p">[</span><span class="s2">"pct_cesareo"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">w</span><span class="p">[</span><span class="n">cesareo</span><span class="p">]</span> <span class="o">/</span> <span class="n">w</span><span class="p">[</span><span class="n">total</span><span class="p">]</span>
+
+<span class="n">w</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>indicador_base           Nascidos vivos por residência - Parto cesáreo  \
+nm_municipio                                                             
+Recife                                                          7988.0   
+Jaboatão dos Guararapes                                         3595.0   
+Petrolina                                                       3170.0   
+Caruaru                                                         3342.0   
+Olinda                                                          1732.0   
+Paulista                                                        1712.0   
+Cabo de Santo Agostinho                                         1278.0   
+Garanhuns                                                       1174.0   
+Camaragibe                                                       795.0   
+Vitória de Santo Antão                                          1050.0   
+
+indicador_base           Nascidos vivos por residência - Total  pct_cesareo  
+nm_municipio                                                                 
+Recife                                                 16116.0         49.6  
+Jaboatão dos Guararapes                                 7284.0         49.4  
+Petrolina                                               6175.0         51.3  
+Caruaru                                                 5285.0         63.2  
+Olinda                                                  3879.0         44.7  
+Paulista                                                3284.0         52.1  
+Cabo de Santo Agostinho                                 2435.0         52.5  
+Garanhuns                                               1965.0         59.7  
+Camaragibe                                              1711.0         46.5  
+Vitória de Santo Antão                                  1622.0         64.7
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Código MIT · Dados das fontes originais, organizados pela Condepe/Fidem (CC BY 4.0)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

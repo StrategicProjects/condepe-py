@@ -1,0 +1,1032 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dados abertos do Observatório de Pernambuco (Condepe/Fidem) no Python">
+      
+      
+      
+        <link rel="canonical" href="https://strategicprojects.github.io/condepe-py/mapas/">
+      
+      
+        <link rel="prev" href="../exemplos/">
+      
+      
+        <link rel="next" href="../fontes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Mapas - condepe</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mapas" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="condepe" class="md-header__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            condepe
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mapas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="condepe" class="md-nav__button md-logo" aria-label="condepe" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    condepe
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/StrategicProjects/condepe-py" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    StrategicProjects/condepe-py
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mapas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-malha-municipal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A malha municipal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mortalidade-infantil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mortalidade infantil
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variacao-da-populacao-entre-os-censos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variação da população entre os Censos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regioes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regiões
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regiao-metropolitana-do-recife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Região Metropolitana do Recife
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camadas-geograficas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camadas geográficas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fontes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fontes do Observatório
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência das funções
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Novidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-malha-municipal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A malha municipal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mortalidade-infantil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mortalidade infantil
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variacao-da-populacao-entre-os-censos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variação da população entre os Censos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regioes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regiões
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regiao-metropolitana-do-recife" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Região Metropolitana do Recife
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camadas-geograficas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Camadas geográficas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mapas">Mapas<a class="headerlink" href="#mapas" title="Permanent link">&para;</a></h1>
+<p>Toda observação do Observatório traz o código IBGE do município
+(<code>cd_municipio_ibge</code>), e isso basta para juntar os dados a uma malha
+municipal e fazer mapas. O pacote traz a malha (<code>condepe_geometry()</code>),
+a junção (<code>condepe_add_geometry()</code>) e as regionalizações do estado
+(<code>condepe_regions()</code>). As funções de malha usam <code>geopandas</code>, que é
+opcional; os gráficos usam <code>matplotlib</code>:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"condepe[geo]"</span><span class="w"> </span>matplotlib
+</code></pre></div>
+<h2 id="a-malha-municipal">A malha municipal<a class="headerlink" href="#a-malha-municipal" title="Permanent link">&para;</a></h2>
+<p><code>condepe_geometry()</code> baixa a Malha Municipal de Pernambuco publicada
+pela Condepe/Fidem (a edição corrente, conferida pelo SHA-256 e
+guardada em cache). Com <code>source="ibge"</code>, a malha vem da API de malhas
+do IBGE. Fernando de Noronha (2605459) fica a 545 km da costa e, num
+mapa do estado inteiro, espreme o continente para a esquerda; os mapas
+abaixo o deixam de fora com <code>noronha=False</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">malha</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_geometry</span><span class="p">(</span><span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">malha</span><span class="p">),</span> <span class="s2">"municípios; edição"</span><span class="p">,</span> <span class="n">malha</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"version"</span><span class="p">],</span> <span class="s2">";"</span><span class="p">,</span> <span class="n">malha</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="n">malha</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>184 municípios; edição 2025-v3 ; EPSG:4326
+  cd_municipio_ibge           nm_municipio                                         geometry
+0           2600054           Abreu e Lima  POLYGON ((-34.9148 -7.9276, -34.91576 -7.927...
+1           2600104  Afogados da Ingazeira  POLYGON ((-37.52795 -7.73721, -37.52758 -7.7...
+2           2600203                Afrânio  POLYGON ((-40.76417 -8.62047, -40.76398 -8.6...
+</code></pre></div>
+<h2 id="mortalidade-infantil">Mortalidade infantil<a class="headerlink" href="#mortalidade-infantil" title="Permanent link">&para;</a></h2>
+<p>A taxa é ruidosa nos municípios pequenos (poucos nascimentos por ano);
+a média de três anos é mais estável:</p>
+<div class="highlight"><pre><span></span><code><span class="n">tmi</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span>
+    <span class="s2">"datasus_mortalidade_infantil"</span><span class="p">,</span>
+    <span class="s2">"Taxa de mortalidade infantil (por mil nascidos vivos)"</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">2024</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">media</span> <span class="o">=</span> <span class="n">tmi</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">"valor"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">mapa</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">malha</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mapa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"Blues"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+               <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">),</span>
+               <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"label"</span><span class="p">:</span> <span class="s2">"por mil nascidos vivos"</span><span class="p">,</span> <span class="s2">"shrink"</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">},</span>
+               <span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"color"</span><span class="p">:</span> <span class="s2">"lightgrey"</span><span class="p">})</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Mortalidade infantil, média de 2022 a 2024"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_tmi"</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="mapa_tmi" src="../assets/mapa_tmi.png" /></p>
+<h2 id="variacao-da-populacao-entre-os-censos">Variação da população entre os Censos<a class="headerlink" href="#variacao-da-populacao-entre-os-censos" title="Permanent link">&para;</a></h2>
+<p>Para uma variação, que tem sinal, classes com cores divergentes deixam
+claro quem cresceu e quem encolheu. População dos Censos de 2010 e
+2022 (as estimativas anuais não cobrem anos de Censo):</p>
+<div class="highlight"><pre><span></span><code><span class="n">pop</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span>
+    <span class="s2">"sidra_censo_cor_raca"</span><span class="p">,</span> <span class="s2">"IBGE - População residente - Total"</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"ano"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">)</span>
+
+<span class="n">w</span><span class="p">[</span><span class="s2">"var"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">2022</span><span class="p">]</span> <span class="o">/</span> <span class="n">w</span><span class="p">[</span><span class="mi">2010</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">rotulos</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"queda &gt; 5%"</span><span class="p">,</span> <span class="s2">"queda até 5%"</span><span class="p">,</span> <span class="s2">"alta até 5%"</span><span class="p">,</span> <span class="s2">"alta de 5 a 15%"</span><span class="p">,</span> <span class="s2">"alta &gt; 15%"</span><span class="p">]</span>
+
+<span class="n">w</span><span class="p">[</span><span class="s2">"classe"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="s2">"var"</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1e9</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">rotulos</span><span class="p">)</span>
+
+<span class="n">mapa</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">geometry</span><span class="o">=</span><span class="n">malha</span><span class="p">)</span>
+
+<span class="n">cores</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">rotulos</span><span class="p">,</span> <span class="p">[</span><span class="s2">"#ff6700"</span><span class="p">,</span> <span class="s2">"#ffc49a"</span><span class="p">,</span> <span class="s2">"#bcd6f5"</span><span class="p">,</span> <span class="s2">"#3d84df"</span><span class="p">,</span> <span class="s2">"#0c2856"</span><span class="p">]))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mapa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">mapa</span><span class="p">[</span><span class="s2">"classe"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">cores</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+               <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patch</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cores</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
+          <span class="n">loc</span><span class="o">=</span><span class="s2">"lower center"</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+          <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Variação da população entre os Censos de 2010 e 2022"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_populacao"</span><span class="p">))</span>
+
+<span class="n">mapa</span><span class="p">[</span><span class="s2">"classe"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>classe
+queda &gt; 5%         48
+queda até 5%       43
+alta até 5%        34
+alta de 5 a 15%    47
+alta &gt; 15%         12
+Name: count, dtype: int64
+</code></pre></div>
+<p><img alt="mapa_populacao" src="../assets/mapa_populacao.png" /></p>
+<h2 id="regioes">Regiões<a class="headerlink" href="#regioes" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>    `condepe_regions()` diz a que região pertence cada município em onze
+    regionalizações: Regiões de Desenvolvimento (RD) da Condepe/Fidem,
+    meso e microrregiões e regiões imediatas e intermediárias do IBGE,
+    regiões e macrorregiões de saúde, Gerências Regionais de Educação
+    (GRE), regiões fiscais da SEFAZ, Diretorias Regionais de Operações (DRO) do DER e regiões
+</code></pre></div>
+<p>metropolitanas. A tabela é
+        publicada pelo Observatório junto com os dados abertos
+        (<code>referencia/regioes.parquet</code>) e lida de lá com cache, como as fontes;
+        sem rede, vale a cópia que vai com o pacote (<code>offline=True</code> força essa):</p>
+<div class="highlight"><pre><span></span><code><span class="n">reg</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_regions</span><span class="p">()</span>
+
+<span class="n">reg</span><span class="p">[</span><span class="s2">"rd"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>rd
+Agreste Central                   27
+Agreste Meridional                26
+Mata Sul                          23
+Mata Norte                        19
+Agreste Setentrional              19
+Sertão do Pajeú                   17
+Região Metropolitana do Recife    14
+Sertão do Araripe                 10
+Sertão Central                     8
+Sertão do São Francisco            7
+Sertão do Moxotó                   7
+Sertão de Itaparica                7
+Distrito Estadual                  1
+Name: count, dtype: int64
+</code></pre></div>
+<p>Para mapear uma região, agregue os dados numa coluna <code>regiao</code> e passe
+<code>level</code> a <code>condepe_add_geometry()</code>: a malha municipal é dissolvida na
+regionalização pedida, com as mesmas divisas. População estimada de
+2025 por Região de Desenvolvimento:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pop</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"sidra_populacao_estimada"</span><span class="p">,</span>
+                             <span class="s2">"Populacao residente estimada"</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="mi">2025</span><span class="p">)</span>
+
+<span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">condepe</span><span class="o">.</span><span class="n">condepe_regions</span><span class="p">(</span><span class="s2">"rd"</span><span class="p">)[[</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span> <span class="s2">"regiao"</span><span class="p">]])</span>
+
+<span class="n">por_rd</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"regiao"</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s2">"valor"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">mapa</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">por_rd</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">"rd"</span><span class="p">,</span> <span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mapa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">mapa</span><span class="p">[</span><span class="s2">"valor"</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"Blues"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+               <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">),</span>
+               <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"label"</span><span class="p">:</span> <span class="s2">"milhões de habitantes"</span><span class="p">,</span> <span class="s2">"shrink"</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"População estimada por Região de Desenvolvimento, 2025"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_rd"</span><span class="p">))</span>
+
+<span class="n">por_rd</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"valor"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>                            regiao      valor
+6   Região Metropolitana do Recife  3961730.0
+0                  Agreste Central  1214544.0
+1               Agreste Meridional   702044.0
+5                         Mata Sul   671469.0
+4                       Mata Norte   610969.0
+12         Sertão do São Francisco   569327.0
+2             Agreste Setentrional   567121.0
+11                 Sertão do Pajeú   345392.0
+9                Sertão do Araripe   336359.0
+10                Sertão do Moxotó   251957.0
+7                   Sertão Central   184722.0
+8              Sertão de Itaparica   143032.0
+3                Distrito Estadual     3341.0
+</code></pre></div>
+<p><img alt="mapa_rd" src="../assets/mapa_rd.png" /></p>
+<p>Os contornos das regiões também servem de camada sobre um mapa
+municipal: a mortalidade infantil por município e, por cima, as doze
+regiões de saúde (as Geres):</p>
+<div class="highlight"><pre><span></span><code><span class="n">geres</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_geometry</span><span class="p">(</span><span class="s2">"regiao_saude"</span><span class="p">,</span> <span class="n">noronha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">malha</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">"valor"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"Blues"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">),</span>
+    <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"label"</span><span class="p">:</span> <span class="s2">"por mil nascidos vivos"</span><span class="p">,</span> <span class="s2">"shrink"</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">},</span>
+    <span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"color"</span><span class="p">:</span> <span class="s2">"lightgrey"</span><span class="p">})</span>
+
+<span class="n">geres</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Mortalidade infantil (2022 a 2024) e regiões de saúde"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_saude"</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="mapa_saude" src="../assets/mapa_saude.png" /></p>
+<h2 id="regiao-metropolitana-do-recife">Região Metropolitana do Recife<a class="headerlink" href="#regiao-metropolitana-do-recife" title="Permanent link">&para;</a></h2>
+<p>Para ver um recorte, filtre a malha antes de desenhar. Os 15
+municípios da RMR (Goiana entrou em 2018) e os leitos de UTI por 100
+mil habitantes em dezembro de 2024; município sem leito no CNES conta
+como zero leitos de UTI:</p>
+<div class="highlight"><pre><span></span><code><span class="n">reg_rm</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_regions</span><span class="p">(</span><span class="s2">"rm"</span><span class="p">)</span>
+
+<span class="n">rmr</span> <span class="o">=</span> <span class="n">reg_rm</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">reg_rm</span><span class="p">[</span><span class="s2">"regiao"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Região Metropolitana do Recife"</span><span class="p">,</span>
+                 <span class="s2">"cd_municipio_ibge"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">uti</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"datasus_leitos"</span><span class="p">,</span> <span class="s2">"Leitos de UTI - Total"</span><span class="p">,</span>
+                             <span class="n">code</span><span class="o">=</span><span class="n">rmr</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="n">pop</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_series</span><span class="p">(</span><span class="s2">"sidra_populacao_estimada"</span><span class="p">,</span> <span class="s2">"Populacao residente estimada"</span><span class="p">,</span>
+                             <span class="n">code</span><span class="o">=</span><span class="n">rmr</span><span class="p">,</span> <span class="n">years</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">pop</span><span class="p">[[</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span> <span class="s2">"nm_municipio"</span><span class="p">,</span> <span class="s2">"valor"</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">uti</span><span class="p">[[</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span> <span class="s2">"valor"</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s2">"cd_municipio_ibge"</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">"_pop"</span><span class="p">,</span> <span class="s2">"_uti"</span><span class="p">))</span><span class="o">.</span><span class="n">fillna</span><span class="p">({</span><span class="s2">"valor_uti"</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s2">"por_100mil"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s2">"valor_uti"</span><span class="p">]</span> <span class="o">/</span> <span class="n">d</span><span class="p">[</span><span class="s2">"valor_pop"</span><span class="p">]</span>
+
+<span class="n">mapa</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_add_geometry</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">malha</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">mapa</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">"por_100mil"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"Blues"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+               <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">),</span>
+               <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">"label"</span><span class="p">:</span> <span class="s2">"por 100 mil hab."</span><span class="p">,</span> <span class="s2">"shrink"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">mapa</span><span class="p">[</span><span class="n">mapa</span><span class="p">[</span><span class="s2">"por_100mil"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">40</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>  <span class="c1"># nm_municipio vem da malha</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">representative_point</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">"nm_municipio"</span><span class="p">],</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"RMR: leitos de UTI por 100 mil hab., dez/2024"</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_rmr"</span><span class="p">))</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"por_100mil"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s2">"nm_municipio"</span><span class="p">,</span> <span class="s2">"valor_uti"</span><span class="p">,</span> <span class="s2">"por_100mil"</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>               nm_municipio  valor_uti  por_100mil
+13                   Recife     1627.0       102.5
+11                   Olinda      155.0        42.4
+10                   Moreno       20.0        34.7
+4                    Goiana       20.0        23.5
+2   Cabo de Santo Agostinho       50.0        23.0
+14     São Lourenço da Mata       25.0        21.2
+0              Abreu e Lima       22.0        21.2
+12                 Paulista       72.0        19.8
+9   Jaboatão dos Guararapes      124.0        18.1
+1                 Araçoiaba        0.0         0.0
+3                Camaragibe        0.0         0.0
+5                  Igarassu        0.0         0.0
+6                   Ipojuca        0.0         0.0
+7         Ilha de Itamaracá        0.0         0.0
+8                Itapissuma        0.0         0.0
+</code></pre></div>
+<p><img alt="mapa_rmr" src="../assets/mapa_rmr.png" /></p>
+<p>Os leitos concentram-se no Recife, que atende pacientes de toda a
+região: o indicador mede oferta no município, não acesso de quem mora
+nele.</p>
+<h2 id="camadas-geograficas">Camadas geográficas<a class="headerlink" href="#camadas-geograficas" title="Permanent link">&para;</a></h2>
+<p>Além da malha, o Observatório publica camadas de referência em
+GeoParquet, e o pacote as lê como <code>GeoDataFrame</code> em WGS 84: a malha
+rodoviária do DER-PE (<code>condepe_roads()</code>, por tipo de trecho), a
+hidrografia da ANA (<code>condepe_hydrography()</code>: rios, rios principais,
+massas d'água, reservatórios acompanhados e unidades de planejamento)
+e qualquer outra camada do catálogo (<code>condepe_layer()</code>, como as
+terras indígenas da FUNAI). Sobrepostas à malha municipal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">rodovias</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_roads</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="p">[</span><span class="s2">"estaduais"</span><span class="p">,</span> <span class="s2">"federais"</span><span class="p">])</span>
+
+<span class="n">rios</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_hydrography</span><span class="p">(</span><span class="s2">"rios_principais"</span><span class="p">)</span>
+
+<span class="n">reservatorios</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_hydrography</span><span class="p">(</span><span class="s2">"reservatorios"</span><span class="p">)</span>
+
+<span class="n">ti</span> <span class="o">=</span> <span class="n">condepe</span><span class="o">.</span><span class="n">condepe_layer</span><span class="p">(</span><span class="s2">"terras_indigenas"</span><span class="p">)</span>
+
+<span class="c1"># As camadas cobrem o Estado inteiro, Noronha inclusive; recorte ao continente</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">malha</span><span class="o">.</span><span class="n">total_bounds</span>
+
+<span class="n">recorte</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">cx</span><span class="p">[</span><span class="n">xmin</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span><span class="n">ymax</span><span class="p">]</span>  <span class="c1"># noqa: E731</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">malha</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"#f5f5f5"</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">))</span>
+
+<span class="n">recorte</span><span class="p">(</span><span class="n">rios</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#00B7FF"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">recorte</span><span class="p">(</span><span class="n">rodovias</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#666666"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+
+<span class="n">recorte</span><span class="p">(</span><span class="n">reservatorios</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#0068FF"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">recorte</span><span class="p">(</span><span class="n">ti</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#FF6700"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Rodovias, rios principais, reservatórios e terras indígenas"</span><span class="p">,</span>
+             <span class="n">loc</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fig</span><span class="p">(</span><span class="s2">"mapa_camadas"</span><span class="p">))</span>
+
+<span class="p">{</span><span class="s2">"trechos"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">rodovias</span><span class="p">),</span> <span class="s2">"rios"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">rios</span><span class="p">),</span> <span class="s2">"reservatorios"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">reservatorios</span><span class="p">),</span>
+ <span class="s2">"terras_indigenas"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">ti</span><span class="p">)}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{'trechos': 814, 'rios': 965, 'reservatorios': 23, 'terras_indigenas': 16}
+</code></pre></div>
+<p><img alt="mapa_camadas" src="../assets/mapa_camadas.png" /></p>
+<p>As camadas vêm no mesmo CRS da malha, então <code>geopandas.overlay()</code> e
+<code>sjoin()</code> resolvem perguntas como "quantos quilômetros de rodovia
+estadual cruzam cada município" — é assim que o Observatório calcula
+as fontes derivadas <code>der_malha_rodoviaria</code> e <code>ana_hidrografia</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Código MIT · Dados das fontes originais, organizados pela Condepe/Fidem (CC BY 4.0)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy", "search.highlight"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
