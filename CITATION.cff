@@ -5,6 +5,7 @@ title: "condepe: open data of the Pernambuco Observatory (Condepe/Fidem) from Py
 version: 0.1.4
 date-released: 2026-11-13
 license: MIT
+doi: 10.5281/zenodo.24209220
 repository-code: "https://github.com/StrategicProjects/condepe-py"
 url: "https://strategicprojects.github.io/condepe-py/"
 keywords:
