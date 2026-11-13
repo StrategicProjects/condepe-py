@@ -1,3 +1,8 @@
+# condepe 0.1.4
+
+* Sem mudança no código. A versão acrescenta o `CITATION.cff` (autores com
+  ORCID) e passa a ser arquivada no Zenodo, que atribui um DOI ao pacote.
+
 # condepe 0.1.3
 
 * `condepe_layer(id)`: qualquer camada geográfica publicada no catálogo
