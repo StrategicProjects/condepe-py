@@ -1,3 +1,10 @@
+# condepe 0.1.5
+
+* Tabela de regionalizações embutida (a reserva usada quando o arquivo
+  publicado não responde) atualizada: Goiana deixa a Região Metropolitana do
+  Recife, que passa a ter 14 municípios, como nos dados publicados desde
+  2026-11-22.
+
 # condepe 0.1.4
 
 * Sem mudança no código. A versão acrescenta o `CITATION.cff` (autores com
