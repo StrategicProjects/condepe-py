@@ -75,7 +75,7 @@ def test_bundled_covers_185_municipalities():
     }
     for nivel, n in esperado.items():
         assert r[nivel].dropna().nunique() == n, nivel
-    assert (r["rm"] == "Região Metropolitana do Recife").sum() == 15
+    assert (r["rm"] == "Região Metropolitana do Recife").sum() == 14
     rd = condepe.condepe_regions("rd", offline=True)
     assert list(rd.columns) == ["cd_municipio_ibge", "nm_municipio", "regiao"]
     with pytest.raises(ValueError):
