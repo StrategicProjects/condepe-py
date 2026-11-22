@@ -2,8 +2,8 @@
 
 * Tabela de regionalizações embutida (a reserva usada quando o arquivo
   publicado não responde) atualizada: Goiana deixa a Região Metropolitana do
-  Recife, que passa a ter 14 municípios, como nos dados publicados desde
-  2026-11-22.
+  Recife, que passa a ter 14 municípios (Lei Complementar Estadual nº
+  426/2020), como nos dados publicados desde 2026-11-22.
 
 # condepe 0.1.4
 
