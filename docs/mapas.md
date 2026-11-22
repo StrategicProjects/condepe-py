@@ -227,8 +227,8 @@ print(fig("mapa_saude"))
 
 ## Região Metropolitana do Recife
 
-Para ver um recorte, filtre a malha antes de desenhar. Os 15
-municípios da RMR (Goiana entrou em 2018) e os leitos de UTI por 100
+Para ver um recorte, filtre a malha antes de desenhar. Os 14
+municípios da RMR e os leitos de UTI por 100
 mil habitantes em dezembro de 2024; município sem leito no CNES conta
 como zero leitos de UTI:
 
@@ -272,21 +272,20 @@ d.sort_values("por_100mil", ascending=False)[["nm_municipio", "valor_uti", "por_
 
 ```text
                nm_municipio  valor_uti  por_100mil
-13                   Recife     1627.0       102.5
-11                   Olinda      155.0        42.4
-10                   Moreno       20.0        34.7
-4                    Goiana       20.0        23.5
+12                   Recife     1627.0       102.5
+10                   Olinda      155.0        42.4
+9                    Moreno       20.0        34.7
 2   Cabo de Santo Agostinho       50.0        23.0
-14     São Lourenço da Mata       25.0        21.2
+13     São Lourenço da Mata       25.0        21.2
 0              Abreu e Lima       22.0        21.2
-12                 Paulista       72.0        19.8
-9   Jaboatão dos Guararapes      124.0        18.1
+11                 Paulista       72.0        19.8
+8   Jaboatão dos Guararapes      124.0        18.1
 1                 Araçoiaba        0.0         0.0
 3                Camaragibe        0.0         0.0
-5                  Igarassu        0.0         0.0
-6                   Ipojuca        0.0         0.0
-7         Ilha de Itamaracá        0.0         0.0
-8                Itapissuma        0.0         0.0
+4                  Igarassu        0.0         0.0
+5                   Ipojuca        0.0         0.0
+6         Ilha de Itamaracá        0.0         0.0
+7                Itapissuma        0.0         0.0
 ```
 
 ![mapa_rmr](assets/mapa_rmr.png)

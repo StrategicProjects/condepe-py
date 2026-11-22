@@ -52,8 +52,8 @@ print(cat.attrs["citation"])
 ```
 
 ```text
-2026-11-06_182408
-Fontes originais indicadas em cada série (coluna fonte_original); dados coletados, padronizados e organizados pela Condepe/Fidem no Observatório de Pernambuco, versão 2026-11-06_182408, https://cf.pe.gov.br/observatorio.
+2026-11-22_141636
+Fontes originais indicadas em cada série (coluna fonte_original); dados coletados, padronizados e organizados pela Condepe/Fidem no Observatório de Pernambuco, versão 2026-11-22_141636, https://cf.pe.gov.br/observatorio.
 ```
 
 Quantas fontes há em cada eixo, e quantos indicadores:
@@ -65,10 +65,10 @@ cat.groupby("eixo").agg(fontes=("id_fonte", "size"), indicadores=("indicadores",
 ```text
                 fontes  indicadores
 eixo                               
-Economia            26        89374
+Economia            26        89378
 Infraestrutura       3           39
 Social              45        15062
-Território           9         9384
+Território           9        10947
 ```
 
 Para achar uma fonte por assunto, filtre o catálogo como qualquer tabela:

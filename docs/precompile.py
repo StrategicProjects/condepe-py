@@ -580,8 +580,8 @@ metropolitanas. A tabela é
         """
         ## Região Metropolitana do Recife
 
-        Para ver um recorte, filtre a malha antes de desenhar. Os 15
-        municípios da RMR (Goiana entrou em 2018) e os leitos de UTI por 100
+        Para ver um recorte, filtre a malha antes de desenhar. Os 14
+        municípios da RMR e os leitos de UTI por 100
         mil habitantes em dezembro de 2024; município sem leito no CNES conta
         como zero leitos de UTI:
         """,
