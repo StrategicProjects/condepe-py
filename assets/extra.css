@@ -1,0 +1,87 @@
+/* Institutional blue of Pernambuco (#0C2856) with the cyan accent of the
+   official palette, as in the R package site. */
+:root {
+  --md-primary-fg-color: #0c2856;
+  --md-primary-fg-color--light: #1f4f9a;
+  --md-primary-fg-color--dark: #06183a;
+  --md-accent-fg-color: #0068ff;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0c2856;
+  --md-accent-fg-color: #00b7ff;
+}
+
+/* Tabelas no estilo do Notion (mesmas regras do site do pacote R): bordas
+   finas, cabeçalho cinza discreto, linhas zebradas, tema como etiqueta. */
+:root {
+  --cn-borda: #e9e9e7; --cn-cabecalho: #f7f6f3; --cn-zebra: #fbfbfa;
+  --cn-hover: #f1f1ef; --cn-texto: #37352f; --cn-suave: #787774;
+}
+[data-md-color-scheme="slate"] {
+  --cn-borda: #373737; --cn-cabecalho: #252525; --cn-zebra: rgba(255,255,255,.025);
+  --cn-hover: rgba(255,255,255,.05); --cn-texto: #e6e6e4; --cn-suave: #9b9b9b;
+}
+.fontes-notion-wrap { overflow-x: auto; margin: .5rem 0 1.5rem; }
+.md-typeset table.fontes-notion,
+.md-typeset table:not([class]) {
+  border-collapse: collapse; font-size: .72rem; line-height: 1.45;
+  color: var(--cn-texto); border: 1px solid var(--cn-borda); border-radius: 4px;
+}
+.md-typeset table.fontes-notion { width: 100%; display: table; }
+.md-typeset table.fontes-notion th, .md-typeset table.fontes-notion td,
+.md-typeset table:not([class]) th, .md-typeset table:not([class]) td {
+  border: 1px solid var(--cn-borda); padding: .45rem .65rem; vertical-align: top;
+}
+.md-typeset table.fontes-notion thead th,
+.md-typeset table:not([class]) thead th {
+  background: var(--cn-cabecalho); color: var(--cn-suave); font-weight: 500;
+  font-size: .66rem; text-align: left; white-space: nowrap;
+}
+.md-typeset table.fontes-notion tbody tr:nth-child(even),
+.md-typeset table:not([class]) tbody tr:nth-child(even) { background: var(--cn-zebra); }
+.md-typeset table.fontes-notion tbody tr:hover,
+.md-typeset table:not([class]) tbody tr:hover { background: var(--cn-hover); box-shadow: none; }
+.md-typeset table.fontes-notion .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; width: 1%; }
+.md-typeset table.fontes-notion td:first-child { width: 12rem; }
+.md-typeset table.fontes-notion td:first-child code { display: inline-block; margin-top: .3rem; background: transparent; padding: 0; color: var(--cn-texto); font-size: .68rem; }
+.md-typeset table.fontes-notion .origem { color: var(--cn-suave); font-size: .64rem; margin-top: .15rem; }
+
+.pill { display: inline-block; padding: 0 .45em; border-radius: 3px; font-size: .64rem; line-height: 1.6; white-space: nowrap; }
+.pill-0 { background: #e3e2e0; color: #32302c; } .pill-1 { background: #eee0da; color: #442a1e; }
+.pill-2 { background: #fadec9; color: #49290e; } .pill-3 { background: #fdecc8; color: #402c1b; }
+.pill-4 { background: #dbeddb; color: #1c3829; } .pill-5 { background: #d3e5ef; color: #183347; }
+.pill-6 { background: #e8deee; color: #412454; } .pill-7 { background: #f5e0e9; color: #4c2337; }
+.pill-8 { background: #ffe2dd; color: #5d1715; }
+[data-md-color-scheme="slate"] .pill-0 { background: #373737; color: #e6e6e4; }
+[data-md-color-scheme="slate"] .pill-1 { background: #4a3228; color: #f0e2d9; }
+[data-md-color-scheme="slate"] .pill-2 { background: #5c3b23; color: #fbe3cf; }
+[data-md-color-scheme="slate"] .pill-3 { background: #564328; color: #fbedd0; }
+[data-md-color-scheme="slate"] .pill-4 { background: #243d30; color: #d7ecdc; }
+[data-md-color-scheme="slate"] .pill-5 { background: #143a4e; color: #d3e8f3; }
+[data-md-color-scheme="slate"] .pill-6 { background: #3c2d49; color: #ebdff3; }
+[data-md-color-scheme="slate"] .pill-7 { background: #4e2c3c; color: #f6dfe9; }
+[data-md-color-scheme="slate"] .pill-8 { background: #522e2a; color: #fde2de; }
+
+details.fontes-eixo { border-bottom: 1px solid var(--cn-borda); padding: .3rem 0; margin: 0; }
+details.fontes-eixo > summary { cursor: pointer; padding: .3rem 0; }
+details.fontes-eixo > summary .eixo { font-weight: 600; }
+details.fontes-eixo > summary .resumo, .md-typeset p.resumo-eixo { color: var(--cn-suave); font-size: .7rem; margin-left: .4rem; }
+.md-typeset p.resumo-eixo { margin: -.4rem 0 .2rem; }
+details.fontes-eixo > summary:focus-visible { outline: 2px solid #0068ff; outline-offset: 2px; border-radius: 3px; }
+
+/* O Material desenha <details> como admonition; aqui é um toggle do Notion. */
+.md-typeset details.fontes-eixo {
+  border: 0; border-bottom: 1px solid var(--cn-borda); border-radius: 0;
+  box-shadow: none; background: none; padding: .3rem 0; margin: 0; font-size: inherit; overflow: visible;
+}
+.md-typeset details.fontes-eixo > summary {
+  background: none; border: 0; padding: .3rem 0 .3rem 1.2rem; font-weight: 400; color: var(--cn-texto);
+}
+.md-typeset details.fontes-eixo > summary::before {
+  content: "▸"; background: none; -webkit-mask-image: none; mask-image: none;
+  color: var(--cn-suave); width: auto; height: auto; left: .1rem; top: .3rem; transition: transform .15s;
+}
+.md-typeset details.fontes-eixo[open] > summary::before { transform: rotate(90deg); }
+.md-typeset details.fontes-eixo > summary::after { display: none; }
+.md-typeset details.fontes-eixo > .fontes-notion-wrap { margin: .3rem 0 1rem; }
+@media (prefers-reduced-motion: reduce) { .md-typeset details.fontes-eixo > summary::before { transition: none; } }
