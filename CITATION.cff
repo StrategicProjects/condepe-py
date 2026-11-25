@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "condepe: open data of the Pernambuco Observatory (Condepe/Fidem) from Python"
-version: 0.1.5
-date-released: 2026-11-22
+version: 0.1.6
+date-released: 2026-11-25
 license: MIT
 doi: 10.5281/zenodo.24209220
 repository-code: "https://github.com/StrategicProjects/condepe-py"

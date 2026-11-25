@@ -1,3 +1,17 @@
+# condepe 0.1.6
+
+* `condepe_geometry()` passa a ler a edição padronizada da Malha Municipal
+  (`2025-v4`, campo `corrente` do manifesto), com as colunas já nos nomes do
+  Observatório. O resultado é o mesmo de antes: 185 feições, as mesmas
+  colunas e a mesma geometria. Manifesto sem `corrente` segue funcionando.
+* `condepe_regions()`: seis colunas novas com os códigos oficiais das regiões
+  (`cd_mesorregiao`, `cd_microrregiao`, `cd_regiao_intermediaria`,
+  `cd_regiao_imediata`, do IBGE; `cd_regiao_saude` e `cd_macrorregiao_saude`,
+  do DATASUS), no fim da tabela. A tabela embutida, usada como reserva,
+  acompanha.
+* Regiões imediatas "Goiana - Timbaúba" e "Belo Jardim - Pesqueira" sem o
+  "¿" que a API do IBGE devolve no lugar do travessão.
+
 # condepe 0.1.5
 
 * Tabela de regionalizações embutida (a reserva usada quando o arquivo
