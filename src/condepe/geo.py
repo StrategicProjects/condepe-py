@@ -151,7 +151,9 @@ def _sha256(raw: bytes) -> str:
 def _malha_condepe(refresh: bool) -> gpd.GeoDataFrame:
     gpd = _gpd()
     manifesto = json.loads(_client._get(f"{MALHA_URL}/manifest.json"))
-    atual = manifesto["atual"]
+    # `corrente` é a edição padronizada (cd_municipio_ibge, nm_municipio); o
+    # manifesto antigo só tem `atual`, com as colunas de origem (cod_munici).
+    atual = manifesto.get("corrente") or manifesto["atual"]
     versao = next((v for v in manifesto["versoes"] if v.get("id") == atual), None)
     arq = next((f for f in (versao or {}).get("formatos", []) if f.get("tipo") == "geojson"), None)
     if arq is None:
@@ -166,10 +168,12 @@ def _malha_condepe(refresh: bool) -> gpd.GeoDataFrame:
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(raw)
     m = gpd.read_file(io.BytesIO(dest.read_bytes()))
+    padronizada = "cd_municipio_ibge" in m.columns
+    cd, nm = ("cd_municipio_ibge", "nm_municipio") if padronizada else ("cod_munici", "nom_munici")
     out = gpd.GeoDataFrame(
         {
-            "cd_municipio_ibge": m["cod_munici"].astype(str),
-            "nm_municipio": m["nom_munici"].astype(str),
+            "cd_municipio_ibge": m[cd].astype(str),
+            "nm_municipio": m[nm].astype(str),
         },
         geometry=m.geometry.values,
         crs=m.crs,
